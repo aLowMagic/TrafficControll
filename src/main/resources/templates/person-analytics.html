@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>青岛海信交通</title>
+
+  <!-- GOOGLE FONTS -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500|Poppins:400,500,600,700|Roboto:400,500" rel="stylesheet"/>
+  <link href="https://cdn.materialdesignicons.com/3.0.39/css/materialdesignicons.min.css" rel="stylesheet" />
+
+  <!-- PLUGINS CSS STYLE -->
+  <link href="../static/assets/plugins/toaster/toastr.min.css" rel="stylesheet" />
+  <link href="../static/assets/plugins/nprogress/nprogress.css" rel="stylesheet" />
+  <link href="../static/assets/plugins/flag-icons/css/flag-icon.min.css" rel="stylesheet"/>
+  <link href="../static/assets/plugins/jvectormap/jquery-jvectormap-2.0.3.css" rel="stylesheet" />
+  <link href="../static/assets/plugins/ladda/ladda.min.css" rel="stylesheet" />
+  <link href="../static/assets/plugins/select2/css/select2.min.css" rel="stylesheet" />
+  <link href="../static/assets/plugins/daterangepicker/daterangepicker.css" rel="stylesheet" />
+
+  <!-- SLEEK CSS -->
+  <link id="sleek-css" rel="stylesheet" href="../static/assets/css/sleek.css" />
+
+  
+
+  <!-- FAVICON -->
+  <link href="../static/assets/img/favicon.png" rel="shortcut icon" />
+
+  <!--
+    HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
+  -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+    <script src="../static/assets/js/yf/situation_index.js"></script>
+  <script src="../static/assets/plugins/nprogress/nprogress.js"></script>
+    <script type="text/javascript" language="javascript" src="../static/assets/js/jquery-1.8.2.min.js" ></script>
+    <style>
+      .select_job{
+        float:left;
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-top:10px;
+        margin-bottom:10px;
+      }
+      .client{
+        border: #f2f3ff 1px solid;
+        padding: 5px 5px;
+        width: 200px;
+        margin: 10px 10px;
+      }
+      .client_select{
+        margin-left: 100px;
+        margin-top: -25px;
+        height: 200px;
+
+      }
+    </style>
+</head>
+
+
+  <body class="sidebar-fixed sidebar-dark header-light header-fixed" id="body">
+    <script>
+      NProgress.configure({ showSpinner: false });
+      NProgress.start();
+      window.onload = function () {
+        traffic_vehicle();
+      }
+
+    </script>
+
+
+    <div class="mobile-sticky-body-overlay"></div>
+
+    <div class="wrapper">
+      
+              <!--
+          ====================================
+          ——— LEFT SIDEBAR WITH FOOTER
+          =====================================
+        -->
+        <aside class="left-sidebar bg-sidebar">
+          <div id="sidebar" class="sidebar sidebar-with-footer">
+            <!-- Aplication Brand -->
+            <div class="app-brand">
+              <a href="/index.html">
+                <svg
+                  class="brand-icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  preserveAspectRatio="xMidYMid"
+                  width="30"
+                  height="33"
+                  viewBox="0 0 30 33"
+                >
+                  <g fill="none" fill-rule="evenodd">
+                    <path
+                      class="logo-fill-blue"
+                      fill="#7DBCFF"
+                      d="M0 4v25l8 4V0zM22 4v25l8 4V0z"
+                    />
+                    <path class="logo-fill-white" fill="#FFF" d="M11 4v25l8 4V0z" />
+                  </g>
+                </svg>
+                <span class="brand-name">交通决策指挥中心</span>
+              </a>
+            </div>
+            <!-- begin sidebar scrollbar -->
+            <div class="sidebar-scrollbar">
+
+              <!-- sidebar menu -->
+              <ul class="nav sidebar-inner" id="sidebar-menu">
+
+
+
+                <li  class="has-sub active expand" >
+                  <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#dashboard"
+                     aria-expanded="false" aria-controls="dashboard">
+                    <i class="mdi mdi-view-dashboard-outline"></i>
+                    <span class="nav-text">基础统计</span> <b class="caret"></b>
+                  </a>
+                  <ul  class="collapse show"  id="dashboard"
+                       data-parent="#sidebar-menu">
+                    <div class="sub-menu">
+
+
+                      <li>
+
+                        <a class="sidenav-item-link" href="/personAnalytics">
+                          <span class="nav-text">车辆态势监测与分析</span>
+                        </a>
+                      </li>
+                      <li>
+
+                        <a class="sidenav-item-link" href="/situation_index">
+
+                          <span class="nav-text">时空路况态势研判分析</span>
+
+                        </a>
+
+                      </li>
+
+                      <li >
+                        <a class="sidenav-item-link" href="/Traffic_Accident">
+                          <span class="nav-text">时空警情态势研判分析</span>
+                        </a>
+
+                      </li>
+
+                      <li >
+                        <a class="sidenav-item-link" href="/showVideo">
+                          <span class="nav-text">视频信息</span>
+
+                          <span class="badge badge-success">new</span>
+
+                        </a>
+                      </li>
+
+
+                    </div>
+                  </ul>
+                </li>
+
+
+
+
+
+                <li  class="has-sub" >
+                  <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#ui-elements"
+                     aria-expanded="false" aria-controls="ui-elements">
+                    <i class="mdi mdi-folder-multiple-outline"></i>
+                    <span class="nav-text">知识图谱</span> <b class="caret"></b>
+                  </a>
+                  <ul  class="collapse"  id="ui-elements"
+                       data-parent="#sidebar-menu">
+                    <div class="sub-menu">
+
+
+                      <li  class="has-sub" >
+                        <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#components"
+                           aria-expanded="false" aria-controls="components">
+                          <span class="nav-text">知识图谱构建与更新</span>
+                        </a>
+
+                      </li>
+
+
+
+
+                      <li  class="has-sub" >
+                        <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#icons"
+                           aria-expanded="false" aria-controls="icons">
+                          <span class="nav-text">知识图谱应用场景</span> <b class="caret"></b>
+                        </a>
+                        <ul  class="collapse"  id="icons">
+                          <div class="sub-menu">
+                            <li >
+                              <a href="material-icon.html">知识查询</a>
+                            </li>
+                            <li >
+                              <a href="material-icon.html">拥堵预测</a>
+                            </li>
+
+                            <li >
+                              <a href="flag-icon.html">拥堵蔓延</a>
+                            </li>
+
+                          </div>
+                        </ul>
+                      </li>
+
+                    </div>
+                  </ul>
+                </li>
+
+
+
+
+
+                <li  class="has-sub" >
+                  <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#charts"
+                     aria-expanded="false" aria-controls="charts">
+                    <i class="mdi mdi-chart-pie"></i>
+                    <span class="nav-text">事件图谱</span> <b class="caret"></b>
+                  </a>
+                  <ul  class="collapse"  id="charts"
+                       data-parent="#sidebar-menu">
+                    <div class="sub-menu">
+
+
+                      <!-- <li>
+                        <a class="sidenav-item-link" href="Traffic_jam.html">
+                          <span class="nav-text">全市拥堵统计</span>
+                        </a>
+                      </li> -->
+                      <li class="active">
+                        <a class="sidenav-item-link" href="Police_case">
+                          <span class="nav-text">事件图谱构造</span>
+
+                        </a>
+                      </li>
+
+
+                    </div>
+                  </ul>
+                </li>
+                <li  class="has-sub" >
+                  <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#pages"
+                     aria-expanded="false" aria-controls="pages">
+                    <i class="mdi mdi-image-filter-none"></i>
+                    <span class="nav-text">视频理解</span> <b class="caret"></b>
+                  </a>
+                  <ul  class="collapse"  id="pages"
+                       data-parent="#sidebar-menu">
+                    <div class="sub-menu">
+
+
+
+                      <li >
+
+                        <a class="sidenav-item-link" href="user-profile.html">
+                          <span class="nav-text">视频属性概要展示</span>
+                        </a>
+
+
+
+                      </li>
+                    </div>
+                  </ul>
+                </li>
+                <li  class="has-sub" >
+                  <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#documentation"
+                     aria-expanded="false" aria-controls="documentation">
+                    <i class="mdi mdi-book-open-page-variant"></i>
+                    <span class="nav-text">对话系统</span> <b class="caret"></b>
+                  </a>
+                  <ul  class="collapse"  id="documentation"
+                       data-parent="#sidebar-menu">
+                    <div class="sub-menu">
+                      <li >
+                        <a class="sidenav-item-link" href="rtl.html">
+                          <span class="nav-text">对话场景展示</span>
+                        </a>
+                      </li>
+                    </div>
+                  </ul>
+                </li>
+
+
+
+              </ul>
+
+            </div>
+
+
+            <hr class="separator" />
+
+            <div class="sidebar-footer">
+              <div class="sidebar-footer-content">
+                <h6 class="text-uppercase">
+                  Cpu Uses <span class="float-right">40%</span>
+                </h6>
+                <div class="progress progress-xs">
+                  <div
+                    class="progress-bar active"
+                    style="width: 40%;"
+                    role="progressbar"
+                  ></div>
+                </div>
+                <h6 class="text-uppercase">
+                  Memory Uses <span class="float-right">65%</span>
+                </h6>
+                <div class="progress progress-xs">
+                  <div
+                    class="progress-bar progress-bar-warning"
+                    style="width: 65%;"
+                    role="progressbar"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+      
+
+      <div class="page-wrapper">
+                  <!-- Header -->
+          <header class="main-header " id="header">
+            <nav class="navbar navbar-static-top navbar-expand-lg">
+              <!-- Sidebar toggle button -->
+              <button id="sidebar-toggler" class="sidebar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+              </button>
+              <!-- search form -->
+              <div class="search-form d-none d-lg-inline-block">
+                <div class="input-group">
+                  <button type="button" name="search" id="search-btn" class="btn btn-flat">
+                    <i class="mdi mdi-magnify"></i>
+                  </button>
+                  <input type="text" name="query" id="search-input" class="form-control" placeholder="'button', 'chart' etc."
+                    autofocus autocomplete="off" />
+                </div>
+                <div id="search-results-container">
+                  <ul id="search-results"></ul>
+                </div>
+              </div>
+
+              <div class="navbar-right ">
+                <ul class="nav navbar-nav">
+                  <!-- Github Link Button -->
+                  <li class="github-link mr-3">
+                    <a class="btn btn-outline-secondary btn-sm" href="https://github.com/tafcoder/sleek-dashboard" target="_blank">
+                      <span class="d-none d-md-inline-block mr-2">Source Code</span>
+                      <i class="mdi mdi-github-circle"></i>
+                    </a>
+
+                  </li>
+                  <li class="dropdown notifications-menu">
+                    <button class="dropdown-toggle" data-toggle="dropdown">
+                      <i class="mdi mdi-bell-outline"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                      <li class="dropdown-header">You have 5 notifications</li>
+                      <li>
+                        <a href="#">
+                          <i class="mdi mdi-account-plus"></i> New user registered
+                          <span class=" font-size-12 d-inline-block float-right"><i class="mdi mdi-clock-outline"></i> 10 AM</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <i class="mdi mdi-account-remove"></i> User deleted
+                          <span class=" font-size-12 d-inline-block float-right"><i class="mdi mdi-clock-outline"></i> 07 AM</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <i class="mdi mdi-chart-areaspline"></i> Sales report is ready
+                          <span class=" font-size-12 d-inline-block float-right"><i class="mdi mdi-clock-outline"></i> 12 PM</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <i class="mdi mdi-account-supervisor"></i> New client
+                          <span class=" font-size-12 d-inline-block float-right"><i class="mdi mdi-clock-outline"></i> 10 AM</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <i class="mdi mdi-server-network-off"></i> Server overloaded
+                          <span class=" font-size-12 d-inline-block float-right"><i class="mdi mdi-clock-outline"></i> 05 AM</span>
+                        </a>
+                      </li>
+                      <li class="dropdown-footer">
+                        <a class="text-center" href="#"> View All </a>
+                      </li>
+                    </ul>
+                  </li>
+                  <!-- User Account -->
+                  <li class="dropdown user-menu">
+                    <button href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                      <img src="../static/assets/img/user/user.png" class="user-image" alt="User Image" />
+                      <span class="d-none d-lg-inline-block">Abdus Salam</span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                      <!-- User image -->
+                      <li class="dropdown-header">
+                        <img src="../static/assets/img/user/user.png" class="img-circle" alt="User Image" />
+                        <div class="d-inline-block">
+                          Abdus Salam <small class="pt-1">abdus@gmail.com</small>
+                        </div>
+                      </li>
+
+                      <li>
+                        <a href="profile.html">
+                          <i class="mdi mdi-account"></i> My Profile
+                        </a>
+                      </li>
+                      <li>
+                        <a href="email-inbox.html">
+                          <i class="mdi mdi-email"></i> Message
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#"> <i class="mdi mdi-diamond-stone"></i> Projects </a>
+                      </li>
+                      <li>
+                        <a href="#"> <i class="mdi mdi-settings"></i> Account Setting </a>
+                      </li>
+
+                      <li class="dropdown-footer">
+                        <a href="signin.html"> <i class="mdi mdi-logout"></i> Log Out </a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+
+
+          </header>
+          <script type="text/javascript">
+            $(function(){
+              $.extend({
+
+                showChartCsv:function (dataset) {
+                  var barX = document.getElementById("barChartCsv");
+                  if (barX !== null) {
+                    var myChart = new Chart(barX, {
+                      type: "bar",
+                      data: {
+                        labels: [
+                          "市南区",
+                          "市北区",
+                          "崂山区",
+                          "李沧区",
+                          "西海岸新区",
+                          "城阳区",
+                          "即墨区",
+                          "莱西市",
+                          "平度市",
+                          "胶州市"
+                        ],
+                        datasets: [
+                          {
+                            label: "车辆数",
+                            data: dataset,
+                            // data: [2, 3.2, 1.8, 2.1, 1.5, 3.5, 4, 2.3, 2.9, 4.5, 1.8, 3.4, 2.8],
+                            backgroundColor: "#4c84ff"
+                          }
+                        ]
+                      },
+                      options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        legend: {
+                          display: false
+                        },
+                        scales: {
+                          xAxes: [
+                            {
+                              gridLines: {
+                                drawBorder: false,
+                                display: false
+                              },
+                              ticks: {
+                                display: false, // hide main x-axis line
+                                beginAtZero: true
+                              },
+                              barPercentage: 1.8,
+                              categoryPercentage: 0.2
+                            }
+                          ],
+                          yAxes: [
+                            {
+                              gridLines: {
+                                drawBorder: false, // hide main y-axis line
+                                display: false
+                              },
+                              ticks: {
+                                display: false,
+                                beginAtZero: true
+                              }
+                            }
+                          ]
+                        },
+                        tooltips: {
+                          titleFontColor: "#888",
+                          bodyFontColor: "#555",
+                          titleFontSize: 12,
+                          bodyFontSize: 15,
+                          backgroundColor: "rgba(256,256,256,0.95)",
+                          displayColors: false,
+                          borderColor: "rgba(220, 220, 220, 0.9)",
+                          borderWidth: 2
+                        }
+                      }
+                    });
+                  }
+                },
+                showDualLine:function(labelData,lastData,curData){
+
+                  var dual = document.getElementById("dual-line");
+                  if (dual !== null) {
+                    var urChart = new Chart(dual, {
+                      type: "line",
+                      data: {
+                        labels: labelData,
+                        datasets: [
+                          {
+                            label: "上周",
+                            pointRadius: 4,
+                            pointBackgroundColor: "rgba(255,255,255,1)",
+                            pointBorderWidth: 2,
+                            fill: false,
+                            backgroundColor: "transparent",
+                            borderWidth: 2,
+                            borderColor: "#fdc506",
+                            data: lastData
+                          },
+                          {
+                            label: "当周",
+                            fill: false,
+                            pointRadius: 4,
+                            pointBackgroundColor: "rgba(255,255,255,1)",
+                            pointBorderWidth: 2,
+                            backgroundColor: "transparent",
+                            borderWidth: 2,
+                            borderColor: "#4c84ff",
+                            data: curData
+                          }
+                        ]
+                      },
+                      options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        layout: {
+                          padding: {
+                            right: 10
+                          }
+                        },
+
+                        legend: {
+                          display: false
+                        },
+                        scales: {
+                          xAxes: [
+                            {
+                              gridLines: {
+                                drawBorder: false,
+                                display: false
+                              },
+                              ticks: {
+                                display: false, // hide main x-axis line
+                                beginAtZero: true
+                              },
+                              barPercentage: 1.8,
+                              categoryPercentage: 0.2
+                            }
+                          ],
+                          yAxes: [
+                            {
+                              gridLines: {
+                                drawBorder: false, // hide main y-axis line
+                                display: false
+                              },
+                              ticks: {
+                                display: false,
+                                beginAtZero: true
+                              }
+                            }
+                          ]
+                        },
+                        tooltips: {
+                          titleFontColor: "#888",
+                          bodyFontColor: "#555",
+                          titleFontSize: 12,
+                          bodyFontSize: 14,
+                          backgroundColor: "rgba(256,256,256,0.95)",
+                          displayColors: true,
+                          borderColor: "rgba(220, 220, 220, 0.9)",
+                          borderWidth: 2
+                        }
+                      }
+                    });
+                  }
+                },
+                showAreaChart:function (label,lastData,curData) {
+                  var area = document.getElementById("area-chart");
+                  if (area !== null) {
+                    var areaChart = new Chart(area, {
+                      type: "line",
+                      data: {
+                        labels: label,
+                        datasets: [
+                          {
+                            label: "上周",
+                            pointHitRadius: 10,
+                            pointRadius: 0,
+                            fill: true,
+                            backgroundColor: "rgba(76, 132, 255, 0.9)",
+                            borderColor: "rgba(76, 132, 255, 0.9)",
+                            data: lastData
+                          },
+                          {
+                            label: "当周",
+                            pointHitRadius: 10,
+                            pointRadius: 0,
+                            fill: true,
+                            backgroundColor: "rgba(253, 197, 6, 0.9)",
+                            borderColor: "rgba(253, 197, 6, 1)",
+                            data: curData
+                          }
+                        ]
+                      },
+                      options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        legend: {
+                          display: false
+                        },
+                        layout: {
+                          padding: {
+                            right: 10
+                          }
+                        },
+                        scales: {
+                          xAxes: [
+                            {
+                              gridLines: {
+                                drawBorder: false,
+                                display: false
+                              },
+                              ticks: {
+                                display: false, // hide main x-axis line
+                                beginAtZero: true
+                              },
+                              barPercentage: 1.8,
+                              categoryPercentage: 0.2
+                            }
+                          ],
+                          yAxes: [
+                            {
+                              gridLines: {
+                                drawBorder: false, // hide main y-axis line
+                                display: false
+                              },
+                              ticks: {
+                                display: false,
+                                beginAtZero: true
+                              }
+                            }
+                          ]
+                        },
+                        tooltips: {
+                          titleFontColor: "#888",
+                          bodyFontColor: "#555",
+                          titleFontSize: 12,
+                          bodyFontSize: 14,
+                          backgroundColor: "rgba(256,256,256,0.95)",
+                          displayColors: true,
+                          borderColor: "rgba(220, 220, 220, 0.9)",
+                          borderWidth: 2
+                        }
+                      }
+                    });
+                  }
+                },
+                showLineChart:function(labelData,curData){
+                  var line = document.getElementById("line");
+                  if (line !== null) {
+                    line = line.getContext("2d");
+                    var gradientFill = line.createLinearGradient(0, 120, 0, 0);
+                    gradientFill.addColorStop(0, "rgba(41,204,151,0.10196)");
+                    gradientFill.addColorStop(1, "rgba(41,204,151,0.30196)");
+
+                    var lChart = new Chart(line, {
+                      type: "line",
+                      data: {
+                        labels: labelData,
+                        datasets: [
+                          {
+                            label: "Rev",
+                            lineTension: 0,
+                            pointRadius: 4,
+                            pointBackgroundColor: "rgba(255,255,255,1)",
+                            pointBorderWidth: 2,
+                            fill: true,
+                            backgroundColor: gradientFill,
+                            borderColor: "#29cc97",
+                            borderWidth: 2,
+                            data: curData
+                          }
+                        ]
+                      },
+                      options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        legend: {
+                          display: false
+                        },
+                        layout: {
+                          padding: {
+                            right: 10
+                          }
+                        },
+                        scales: {
+                          xAxes: [
+                            {
+                              gridLines: {
+                                drawBorder: false,
+                                display: false
+                              },
+                              ticks: {
+                                display: false, // hide main x-axis line
+                                beginAtZero: true
+                              },
+                              barPercentage: 1.8,
+                              categoryPercentage: 0.2
+                            }
+                          ],
+                          yAxes: [
+                            {
+                              gridLines: {
+                                drawBorder: false, // hide main y-axis line
+                                display: false
+                              },
+                              ticks: {
+                                display: false,
+                                beginAtZero: true
+                              }
+                            }
+                          ]
+                        },
+                        tooltips: {
+                          titleFontColor: "#888",
+                          bodyFontColor: "#555",
+                          titleFontSize: 12,
+                          bodyFontSize: 14,
+                          backgroundColor: "rgba(256,256,256,0.95)",
+                          displayColors: true,
+                          borderColor: "rgba(220, 220, 220, 0.9)",
+                          borderWidth: 2
+                        }
+                      }
+                    });
+                  }
+                },
+                showDoChart:function(labelData,doChartData){
+                  var doughnut = document.getElementById("doChart");
+                  if (doughnut !== null) {
+                    var myDoughnutChart = new Chart(doughnut, {
+                      type: "doughnut",
+                      data: {
+                        labels: labelData,
+                        datasets: [
+                          {
+                            label: labelData,
+                            data: doChartData,
+                            backgroundColor: ["#4c84ff", "#29cc97", "#8061ef", "#fec402"],
+                            borderWidth: 1
+                            // borderColor: ['#4c84ff','#29cc97','#8061ef','#fec402']
+                            // hoverBorderColor: ['#4c84ff', '#29cc97', '#8061ef', '#fec402']
+                          }
+                        ]
+                      },
+                      options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        legend: {
+                          display: false
+                        },
+                        cutoutPercentage: 75,
+                        tooltips: {
+                          callbacks: {
+                            title: function(tooltipItem, data) {
+                              return "Order : " + data["labels"][tooltipItem[0]["index"]];
+                            },
+                            label: function(tooltipItem, data) {
+                              return data["datasets"][0]["data"][tooltipItem["index"]];
+                            }
+                          },
+                          titleFontColor: "#888",
+                          bodyFontColor: "#555",
+                          titleFontSize: 12,
+                          bodyFontSize: 14,
+                          backgroundColor: "rgba(256,256,256,0.95)",
+                          displayColors: true,
+                          borderColor: "rgba(220, 220, 220, 0.9)",
+                          borderWidth: 2
+                        }
+                      }
+                    });
+                  }
+                }
+              });
+            });
+            $(document).ready(function(){
+              var dataset = '';
+              var dataset1 = eval("("+dataset+")");   //数组字符串转为数组
+              $.showChartCsv(dataset1);
+
+              var labelOld = '';
+              var label = eval("("+labelOld+")");
+              var lastWeekOld = '';
+              var lastWeek = eval("("+lastWeekOld+")");
+              var curWeekOld = '';
+              var curWeek = eval("("+curWeekOld+")");
+              $.showDualLine(label,lastWeek,curWeek);
+
+              var lastWeekAreaOld = '';
+              var lastWeekArea = eval("("+lastWeekAreaOld+")");
+              var curWeekAreaOld = '';
+              var curWeekArea = eval("("+curWeekAreaOld+")");
+              $.showAreaChart(label,lastWeekArea,curWeekArea);
+              var curLineOld = '';
+              var curLine = eval("("+curLineOld+")");
+              $.showLineChart(label,curLine);
+
+              var labelCarOld = '';
+              var labelCar =  eval("("+labelCarOld+")");
+              var doChartOld = '';
+              var doChart =  eval("("+doChartOld+")");
+              $.showDoChart(labelCar,doChart);
+            });
+            function updateblock() {
+              var timeId = $("#timeId option:selected").val();
+              var blockId = $("#blockId option:selected").val();
+              location.href = 'updateBlock?timeId='+timeId+'&blockId='+blockId
+            }
+          </script>
+
+
+        <div class="content-wrapper">
+          <div class="content">						 
+                  <!-- Top Statistics -->
+                 <!-- <div class="row">
+                    <div class="col-xl-3 col-sm-6">
+                      <div class="card card-mini mb-4">
+                        <div class="card-body">
+                          <h2 class="mb-1">9,503</h2>
+                          <p>全市实时大型车辆统计</p>
+                          <div class="chartjs-wrapper">
+                            <canvas id="barChartCsv"></canvas>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6">
+                      <div class="card card-mini  mb-4">
+                        <div class="card-body">
+                          <h2 class="mb-1">9,503</h2>
+                          <p>全市周黑名单车辆统计</p>
+                          <div class="chartjs-wrapper">
+                            <canvas id="dual-line"></canvas>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6">
+                      <div class="card card-mini mb-4">
+                        <div class="card-body">
+                          <h2 class="mb-1">71,503</h2>
+                          <p>全市周驾驶人违法统计</p>
+                          <div class="chartjs-wrapper">
+                            <canvas id="area-chart"></canvas>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6">
+                      <div class="card card-mini mb-4">
+                        <div class="card-body">
+                          <h2 class="mb-1">9,503</h2>
+                          <p>全市周军警车辆违法统计</p>
+                          <div class="chartjs-wrapper">
+                            <canvas id="line"></canvas>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>-->
+
+
+						<div class="row">
+                          <div class="col-xl-9 col-md-12">
+                            <!-- Sales Graph -->
+                            <div class="card card-default">
+                              <div class="card-header">
+                                <h2>车辆态势监测</h2>
+                              </div>
+
+                              <div class="card card-default">
+                                <div id="timeChoice"
+                                     style="width: 800px; margin-top: 10px; margin-bottom: 10px">
+                                  <div style="float: left; margin-top: 2px">
+                                    <p style="margin-left: 40px">时间选择</p>
+                                  </div>
+                                  <div style="margin-left: 90px;float:left">
+                                    <input type="datetime-local">
+                                  </div>
+                                  <div style="margin-left: 40px; float: left">
+                                    ~~~~
+                                  </div>
+                                  <div style="margin-left: 40px;float:left">
+                                    <input type="datetime-local">
+                                  </div>
+                                </div>
+                                <div style="margin-left: 40px">
+                                  <button class="mb-1 btn btn-success">
+                                    查询
+                                  </button>
+                                </div>
+                                <ul class="nav nav-tabs" id="functionTab" role="tablist"
+                                    style="padding-left: 12px">
+                                  <li class="nav=item"><a class="nav-link active" id="" data-toggle="tab"
+                                                          onclick="traffic_vehicle();" role="tab"
+                                                          aria-controls="home" aria-selected="true">车辆迁移密度图</a>
+                                  </li>
+
+                                  <li class="nav=item"><a class="nav-link active" id="" data-toggle="tab"
+                                                          onclick="car_transfer();" role="tab"
+                                                          aria-controls="home" aria-selected="true">车辆迁移OD图</a>
+                                  </li>
+
+
+
+                                </ul>
+                                <div class="card-body" style="height: 400px">
+                                  <div id="map" style="height: 350px; width: 100%">
+
+                                  </div>
+                                  <!--                                <table class="table" id="dataTable">-->
+                                  <!--                                </table>-->
+                                  <!--                                <canvas id="linechart" class="chartjs"></canvas>-->
+                                </div>
+                              </div>
+
+                            </div>
+                          </div>
+
+                          <div class="col-xl-3 col-md-12">
+                            <div class="card card-default" >
+                              <!-- Doughnut Chart -->
+                              <div class="card-body" id="time-data">
+                                <h3 id="show_data">ds</h3>
+                              </div>
+                            </div>
+                          </div>
+						</div>
+
+						<div class="row">
+                          <div class="col-xl-4 col-md-12">
+                            <!-- Doughnut Chart -->
+                            <div class="card card-default"style="width:725px;">
+                              <div class="card-header justify-content-left">
+                                <button style="padding-left:5px;padding-right:5px;font-size: 16px;">日</button>|<button style="padding-left:5px;padding-right:5px;font-size: 16px;">周</button> | <button style="padding-left:5px;padding-right:5px;font-size: 16px;">月</button> | <button style="padding-left:5px;padding-right:5px;font-size: 16px;">年</button>
+                              </div>
+                              <div class="card-header justify-content-center">
+                                <h2 id="history1">全市大客车违规比例趋势图</h2>
+                              </div>
+                              <div class="card-body pt-0">
+                                <canvas id="linechart" class="chartjs"></canvas>
+                              </div>
+                            </div>
+								
+                            <!-- Polar and Radar Chart -->
+                            <div class="card card-default" style="width:725px;">
+                              <div class="card-header justify-content-left">
+                                <button style="padding-left:5px;padding-right:5px;font-size: 16px;">日</button>|<button style="padding-left:5px;padding-right:5px;font-size: 16px;">周</button> | <button style="padding-left:5px;padding-right:5px;font-size: 16px;">月</button> | <button style="padding-left:5px;padding-right:5px;font-size: 16px;">年</button>
+                              </div>
+                              <div class="card-header justify-content-center">
+                                <h2 id="history2">全市私家车违规比例趋势图</h2>
+                              </div>
+                              <div class="card-body pt-0">
+                                <canvas id="linechart1" class="chartjs"></canvas>
+                              </div>
+                            </div>
+
+							</div>
+
+
+						</div>
+            <div class="row" style="margin-left:735px;margin-top:-870px;width:290px;">
+              <div class="card card-default" data-scroll-height="550" >
+              <div class="card-header justify-content-between " style="width:290px;">
+                <h2>重点违法车辆</h2>
+                <div style="margin-top: 30px;width:250px;">
+                  <table width="100%" border="0" cellspacing="0"  style='font-size: 14px;text-align: left;'><tr>
+                      <th bgcolor="#FFFFFF" style='padding: 5px 5px;'>车牌号</th><th bgcolor="#FFFFFF" style='padding: 5px 5px;'>所有人</th><th bgcolor="#FFFFFF" style='padding: 5px 5px;'>违法数</th>
+                      </tr>
+                    <#list top_res_list as top_res>
+                    <tr><td bgcolor="#FFFFFF" style='padding: 5px 5px;'>${top_res.carNo}</td><td bgcolor="#FFFFFF" style='padding: 5px 5px;'>${top_res.driver}</td><td bgcolor="#FFFFFF" style='padding: 5px 5px;'>${top_res.illegalBehaviorNum}</td></tr>
+                  </#list>
+
+                    </table>
+                  <div style='margin-top: 10px;margin-left: 40px;margin-bottom:10px;'><a href="/illegalVehicle" class="mb-1 btn btn-success" width='100%'>查看数据详情</a></div>
+                </div>
+
+              </div>
+            </div>
+
+
+
+
+
+</div>
+
+          
+
+
+        </div>
+
+
+
+      </div>
+    </div>
+    <script src="../static/assets/js/yf/situation_index.js"></script>
+    <script src="../static/assets/js/echarts.min.js"></script>
+<script src="../static/assets/plugins/jquery/jquery.min.js"></script>
+<script src="../static/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../static/assets/plugins/toaster/toastr.min.js"></script>
+<script src="../static/assets/plugins/slimscrollbar/jquery.slimscroll.min.js"></script>
+<script src="../static/assets/plugins/charts/Chart.min.js"></script>
+<script src="../static/assets/plugins/ladda/spin.min.js"></script>
+<script src="../static/assets/plugins/ladda/ladda.min.js"></script>
+<script src="../static/assets/plugins/jquery-mask-input/jquery.mask.min.js"></script>
+<script src="../static/assets/plugins/select2/js/select2.min.js"></script>
+<script src="../static/assets/plugins/jvectormap/jquery-jvectormap-2.0.3.min.js"></script>
+<script src="../static/assets/plugins/jvectormap/jquery-jvectormap-world-mill.js"></script>
+<script src="../static/assets/plugins/daterangepicker/moment.min.js"></script>
+<script src="../static/assets/plugins/daterangepicker/daterangepicker.js"></script>
+<script src="../static/assets/plugins/jekyll-search.min.js"></script>
+<script src="../static/assets/js/sleek.js"></script>
+<script src="../static/assets/js/chart.js"></script>
+<script src="../static/assets/js/date-range.js"></script>
+<script src="../static/assets/js/map.js"></script>
+<script src="../static/assets/js/custom.js"></script>
+
+    <!--百度地图api-->
+    <script type="text/javascript"
+            src="http://api.map.baidu.com/api?v=3.0&ak=QGQ7z7AQW3YeGjOcX8VxA6MPGGCQIXk6"></script>
+
+
+
+
+  </body>
+</html>
