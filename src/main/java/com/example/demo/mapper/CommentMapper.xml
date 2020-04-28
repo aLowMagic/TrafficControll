@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.CommentMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.po.Comment">
+    <id column="COMMENTID" jdbcType="VARCHAR" property="COMMENTID" />
+    <result column="FAQQUESTIONID" jdbcType="VARCHAR" property="FAQQUESTIONID" />
+    <result column="COMMUNITYQUESTIONID" jdbcType="VARCHAR" property="COMMUNITYQUESTIONID" />
+    <result column="USERID" jdbcType="VARCHAR" property="USERID" />
+    <result column="COMMENTCONTENT" jdbcType="VARCHAR" property="COMMENTCONTENT" />
+    <result column="COMMENTTIME" jdbcType="VARCHAR" property="COMMENTTIME" />
+    <result column="COMMENTPARENTID" jdbcType="VARCHAR" property="COMMENTPARENTID" />
+    <result column="TOUSERID" jdbcType="VARCHAR" property="TOUSERID" />
+    <result column="ISNOTICE" jdbcType="INTEGER" property="ISNOTICE" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    COMMENTID, FAQQUESTIONID, COMMUNITYQUESTIONID, USERID, COMMENTCONTENT, COMMENTTIME, 
+    COMMENTPARENTID, TOUSERID, ISNOTICE
+  </sql>
+  <select id="selectByExample" parameterType="com.example.demo.po.CommentExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from tbl_comment
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_comment
+    where COMMENTID = #{COMMENTID,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from tbl_comment
+    where COMMENTID = #{COMMENTID,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.po.Comment">
+    insert into tbl_comment (COMMENTID, FAQQUESTIONID, COMMUNITYQUESTIONID, 
+      USERID, COMMENTCONTENT, COMMENTTIME, 
+      COMMENTPARENTID, TOUSERID, ISNOTICE
+      )
+    values (#{COMMENTID,jdbcType=VARCHAR}, #{FAQQUESTIONID,jdbcType=VARCHAR}, #{COMMUNITYQUESTIONID,jdbcType=VARCHAR}, 
+      #{USERID,jdbcType=VARCHAR}, #{COMMENTCONTENT,jdbcType=VARCHAR}, #{COMMENTTIME,jdbcType=VARCHAR}, 
+      #{COMMENTPARENTID,jdbcType=VARCHAR}, #{TOUSERID,jdbcType=VARCHAR}, #{ISNOTICE,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.po.Comment">
+    insert into tbl_comment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="COMMENTID != null">
+        COMMENTID,
+      </if>
+      <if test="FAQQUESTIONID != null">
+        FAQQUESTIONID,
+      </if>
+      <if test="COMMUNITYQUESTIONID != null">
+        COMMUNITYQUESTIONID,
+      </if>
+      <if test="USERID != null">
+        USERID,
+      </if>
+      <if test="COMMENTCONTENT != null">
+        COMMENTCONTENT,
+      </if>
+      <if test="COMMENTTIME != null">
+        COMMENTTIME,
+      </if>
+      <if test="COMMENTPARENTID != null">
+        COMMENTPARENTID,
+      </if>
+      <if test="TOUSERID != null">
+        TOUSERID,
+      </if>
+      <if test="ISNOTICE != null">
+        ISNOTICE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="COMMENTID != null">
+        #{COMMENTID,jdbcType=VARCHAR},
+      </if>
+      <if test="FAQQUESTIONID != null">
+        #{FAQQUESTIONID,jdbcType=VARCHAR},
+      </if>
+      <if test="COMMUNITYQUESTIONID != null">
+        #{COMMUNITYQUESTIONID,jdbcType=VARCHAR},
+      </if>
+      <if test="USERID != null">
+        #{USERID,jdbcType=VARCHAR},
+      </if>
+      <if test="COMMENTCONTENT != null">
+        #{COMMENTCONTENT,jdbcType=VARCHAR},
+      </if>
+      <if test="COMMENTTIME != null">
+        #{COMMENTTIME,jdbcType=VARCHAR},
+      </if>
+      <if test="COMMENTPARENTID != null">
+        #{COMMENTPARENTID,jdbcType=VARCHAR},
+      </if>
+      <if test="TOUSERID != null">
+        #{TOUSERID,jdbcType=VARCHAR},
+      </if>
+      <if test="ISNOTICE != null">
+        #{ISNOTICE,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.po.Comment">
+    update tbl_comment
+    <set>
+      <if test="FAQQUESTIONID != null">
+        FAQQUESTIONID = #{FAQQUESTIONID,jdbcType=VARCHAR},
+      </if>
+      <if test="COMMUNITYQUESTIONID != null">
+        COMMUNITYQUESTIONID = #{COMMUNITYQUESTIONID,jdbcType=VARCHAR},
+      </if>
+      <if test="USERID != null">
+        USERID = #{USERID,jdbcType=VARCHAR},
+      </if>
+      <if test="COMMENTCONTENT != null">
+        COMMENTCONTENT = #{COMMENTCONTENT,jdbcType=VARCHAR},
+      </if>
+      <if test="COMMENTTIME != null">
+        COMMENTTIME = #{COMMENTTIME,jdbcType=VARCHAR},
+      </if>
+      <if test="COMMENTPARENTID != null">
+        COMMENTPARENTID = #{COMMENTPARENTID,jdbcType=VARCHAR},
+      </if>
+      <if test="TOUSERID != null">
+        TOUSERID = #{TOUSERID,jdbcType=VARCHAR},
+      </if>
+      <if test="ISNOTICE != null">
+        ISNOTICE = #{ISNOTICE,jdbcType=INTEGER},
+      </if>
+    </set>
+    where COMMENTID = #{COMMENTID,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.po.Comment">
+    update tbl_comment
+    set FAQQUESTIONID = #{FAQQUESTIONID,jdbcType=VARCHAR},
+      COMMUNITYQUESTIONID = #{COMMUNITYQUESTIONID,jdbcType=VARCHAR},
+      USERID = #{USERID,jdbcType=VARCHAR},
+      COMMENTCONTENT = #{COMMENTCONTENT,jdbcType=VARCHAR},
+      COMMENTTIME = #{COMMENTTIME,jdbcType=VARCHAR},
+      COMMENTPARENTID = #{COMMENTPARENTID,jdbcType=VARCHAR},
+      TOUSERID = #{TOUSERID,jdbcType=VARCHAR},
+      ISNOTICE = #{ISNOTICE,jdbcType=INTEGER}
+    where COMMENTID = #{COMMENTID,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="question2_getComment_Limit" resultMap="BaseResultMap">
+  	SELECT * FROM TBL_Comment WHERE COMMUNITYQUESTIONID=#{0} AND COMMENTPARENTID=#{1} ORDER BY COMMENTTIME ASC LIMIT 5
+  </select>
+  <select id="getComment2" resultType="int">
+  	SELECT COUNT(1) FROM TBL_Comment WHERE FAQQUESTIONID=#{0} AND COMMENTPARENTID=#{1}
+  </select>
+  <select id="question2_getComment" resultType="int">
+  	SELECT COUNT(1) FROM TBL_Comment WHERE COMMUNITYQUESTIONID=#{0} AND COMMENTPARENTID=#{1}
+  </select>
+  <select id="question2_getMoreComment" resultMap="BaseResultMap">
+  	SELECT * FROM TBL_Comment WHERE COMMUNITYQUESTIONID=#{0} AND COMMENTPARENTID=#{1} ORDER BY COMMENTTIME ASC LIMIT #{2},5
+  </select>
+  <select id="commentInfo" resultType="int">
+  	SELECT COUNT(1) FROM TBL_Comment WHERE FAQQUESTIONID=#{0}
+  </select>
+  <select id="faq1_userActive" resultMap="BaseResultMap">
+  	SELECT USERID,count(USERID) as NUM FROM TBL_Comment WHERE STR_TO_DATE(COMMENTTIME,'%Y-%m-%d')=STR_TO_DATE(#{0},'%Y-%m-%d') GROUP BY USERID ORDER BY NUM DESC LIMIT 10
+  </select>
+  <select id="faq1_userActiveWeek" resultMap="BaseResultMap">
+  	SELECT USERID,count(USERID) as NUM FROM TBL_Comment WHERE STR_TO_DATE(COMMENTTIME,'%Y-%m-%d')&lt; STR_TO_DATE(#{0},'%Y-%m-%d') AND STR_TO_DATE(COMMENTTIME,'%Y-%m-%d')&gt;STR_TO_DATE(#{1},'%Y-%m-%d') GROUP BY USERID ORDER BY NUM DESC LIMIT 10
+  </select>
+  <select id="getCommentMore" resultMap="BaseResultMap">
+  	SELECT * FROM TBL_Comment WHERE FAQQUESTIONID=#{0} AND COMMENTPARENTID=#{2} ORDER BY COMMENTTIME ASC LIMIT #{1},5
+  </select>
+  <insert id="saveComment">
+  	INSERT INTO TBL_Comment(COMMENTID,FAQQUESTIONID,COMMUNITYQUESTIONID,USERID,COMMENTCONTENT,COMMENTTIME,COMMENTPARENTID,ISNOTICE,TOUSERID) VALUES (#{0},#{1},#{2},#{3},#{4},#{5},#{6},#{7},#{8})
+  </insert>
+  <select id="question2_getComment2" resultType="String">
+  	SELECT COMMENTID FROM TBL_Comment WHERE COMMENTPARENTID=#{0} AND USERID=#{1} AND COMMENTCONTENT=#{2} AND COMMUNITYQUESTIONID=#{3}
+  </select>
+  <select id="faq3_getComment" resultType="String">
+  	SELECT USERID FROM TBL_Comment WHERE COMMENTPARENTID=#{0} AND USERID=#{1} AND COMMENTCONTENT=#{2} AND FAQQUESTIONID=#{3}
+  </select>
+  <select id="faq3_getUserIdByCommentId" resultType="String">
+  	SELECT USERID FROM TBL_Comment WHERE COMMENTID=#{0}
+  </select>
+  <select id="faq3_getCommentInfoById" resultMap="BaseResultMap">
+  	SELECT * FROM TBL_Comment WHERE COMMENTID=#{0}
+  </select>
+  <delete id="deleteReply">
+  	DELETE FROM TBL_Comment WHERE COMMENTID=#{0}
+  </delete>
+  <select id="faq3_getCommentReply_Limit" resultMap="BaseResultMap">
+  	SELECT * FROM TBL_Comment WHERE COMMENTPARENTID=#{0} ORDER BY COMMENTTIME ASC LIMIT #{1},5
+  </select>
+  <select id="faq3_getCommentCountById" resultType="int">
+  	SELECT COUNT(1) FROM TBL_Comment WHERE COMMENTPARENTID=#{0}
+  </select>
+  <select id="faq3_getCommentReply" resultType="int">
+  	SELECT COUNT(1) FROM TBL_Comment WHERE COMMENTPARENTID=#{0} ORDER BY COMMENTTIME ASC
+  </select>
+  <select id="personal2_getFaqComment_Limit" resultMap="BaseResultMap">
+  	SELECT * FROM TBL_Comment WHERE USERID=#{0} AND COMMENTPARENTID=#{1} ORDER BY COMMENTTIME DESC LIMIT #{2},#{3}
+  </select>
+  <select id="notice_getComment" resultMap="BaseResultMap">
+  	SELECT * FROM TBL_Comment WHERE COMMUNITYQUESTIONID=#{0} AND COMMENTPARENTID=#{1} AND TOUSERID IS NULL AND ISNOTICE=#{2}
+  </select>
+  <select id="notice_getFaqComment" resultMap="BaseResultMap">
+  	SELECT * FROM TBL_Comment WHERE FAQQUESTIONID=#{0} AND COMMENTPARENTID=#{1} AND ISNOTICE=#{2}
+  </select>
+  <select id="notice_getFaqComment2" resultMap="BaseResultMap">
+  	SELECT * FROM TBL_Comment WHERE USERID=#{0} AND COMMENTPARENTID=#{1}
+  </select>
+  <select id="notice_getReply" resultMap="BaseResultMap">
+  	SELECT * FROM TBL_Comment WHERE COMMUNITYQUESTIONID=#{0} AND COMMENTPARENTID=#{1} AND TOUSERID IS NOT NULL AND ISNOTICE=#{2}
+  </select>
+  <select id="notice_getFaqReply" resultMap="BaseResultMap">
+  	SELECT * FROM TBL_Comment WHERE COMMENTPARENTID=#{0} AND TOUSERID IS NULL AND ISNOTICE=#{1}
+  </select>
+  <select id="notice_getFaqReply2" resultMap="BaseResultMap">
+  	SELECT * FROM TBL_Comment WHERE COMMENTPARENTID=#{0} AND TOUSERID IS NOT NULL AND ISNOTICE=#{1}
+  </select>
+  <update id="updateNotice">
+  	UPDATE TBL_Comment SET TBL_Comment.ISNOTICE=#{0} WHERE COMMENTID=#{1}
+  </update>
+  <update id="updateNotice2">
+  	UPDATE TBL_CommunityAnswer SET TBL_CommunityAnswer.ISNOTICE=#{0} WHERE COMMUNITYANSWERID=#{1}
+  </update>
+  <update id="deleteNotice">
+  	UPDATE TBL_Comment SET TBL_Comment.ISNOTICE=#{0} WHERE COMMENTID=#{1}
+  </update>
+  <update id="deleteNotice2">
+  	UPDATE TBL_CommunityAnswer SET TBL_CommunityAnswer.ISNOTICE=#{0} WHERE COMMUNITYANSWERID=#{1}
+  </update>
+  
+</mapper>

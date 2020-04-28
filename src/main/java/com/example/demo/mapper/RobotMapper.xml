@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.RobotMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.po.Robot">
+    <id column="ROBOTID" jdbcType="VARCHAR" property="ROBOTID" />
+    <result column="ROBOTNAME" jdbcType="VARCHAR" property="ROBOTNAME" />
+    <result column="ROBOTIMAGE" jdbcType="VARCHAR" property="ROBOTIMAGE" />
+    <result column="ROBOTINTRODUCTION" jdbcType="VARCHAR" property="ROBOTINTRODUCTION" />
+    <result column="ROBOTWELCOME" jdbcType="VARCHAR" property="ROBOTWELCOME" />
+    <result column="ROBOTNOKNOW" jdbcType="VARCHAR" property="ROBOTNOKNOW" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ROBOTID, ROBOTNAME, ROBOTIMAGE, ROBOTINTRODUCTION, ROBOTWELCOME, ROBOTNOKNOW
+  </sql>
+  <select id="selectByExample" parameterType="com.example.demo.po.RobotExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from tbl_robot
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_robot
+    where ROBOTID = #{ROBOTID,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from tbl_robot
+    where ROBOTID = #{ROBOTID,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.po.Robot">
+    insert into tbl_robot (ROBOTID, ROBOTNAME, ROBOTIMAGE, 
+      ROBOTINTRODUCTION, ROBOTWELCOME, ROBOTNOKNOW
+      )
+    values (#{ROBOTID,jdbcType=VARCHAR}, #{ROBOTNAME,jdbcType=VARCHAR}, #{ROBOTIMAGE,jdbcType=VARCHAR}, 
+      #{ROBOTINTRODUCTION,jdbcType=VARCHAR}, #{ROBOTWELCOME,jdbcType=VARCHAR}, #{ROBOTNOKNOW,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.po.Robot">
+    insert into tbl_robot
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ROBOTID != null">
+        ROBOTID,
+      </if>
+      <if test="ROBOTNAME != null">
+        ROBOTNAME,
+      </if>
+      <if test="ROBOTIMAGE != null">
+        ROBOTIMAGE,
+      </if>
+      <if test="ROBOTINTRODUCTION != null">
+        ROBOTINTRODUCTION,
+      </if>
+      <if test="ROBOTWELCOME != null">
+        ROBOTWELCOME,
+      </if>
+      <if test="ROBOTNOKNOW != null">
+        ROBOTNOKNOW,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ROBOTID != null">
+        #{ROBOTID,jdbcType=VARCHAR},
+      </if>
+      <if test="ROBOTNAME != null">
+        #{ROBOTNAME,jdbcType=VARCHAR},
+      </if>
+      <if test="ROBOTIMAGE != null">
+        #{ROBOTIMAGE,jdbcType=VARCHAR},
+      </if>
+      <if test="ROBOTINTRODUCTION != null">
+        #{ROBOTINTRODUCTION,jdbcType=VARCHAR},
+      </if>
+      <if test="ROBOTWELCOME != null">
+        #{ROBOTWELCOME,jdbcType=VARCHAR},
+      </if>
+      <if test="ROBOTNOKNOW != null">
+        #{ROBOTNOKNOW,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.po.Robot">
+    update tbl_robot
+    <set>
+      <if test="ROBOTNAME != null">
+        ROBOTNAME = #{ROBOTNAME,jdbcType=VARCHAR},
+      </if>
+      <if test="ROBOTIMAGE != null">
+        ROBOTIMAGE = #{ROBOTIMAGE,jdbcType=VARCHAR},
+      </if>
+      <if test="ROBOTINTRODUCTION != null">
+        ROBOTINTRODUCTION = #{ROBOTINTRODUCTION,jdbcType=VARCHAR},
+      </if>
+      <if test="ROBOTWELCOME != null">
+        ROBOTWELCOME = #{ROBOTWELCOME,jdbcType=VARCHAR},
+      </if>
+      <if test="ROBOTNOKNOW != null">
+        ROBOTNOKNOW = #{ROBOTNOKNOW,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ROBOTID = #{ROBOTID,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.po.Robot">
+    update tbl_robot
+    set ROBOTNAME = #{ROBOTNAME,jdbcType=VARCHAR},
+      ROBOTIMAGE = #{ROBOTIMAGE,jdbcType=VARCHAR},
+      ROBOTINTRODUCTION = #{ROBOTINTRODUCTION,jdbcType=VARCHAR},
+      ROBOTWELCOME = #{ROBOTWELCOME,jdbcType=VARCHAR},
+      ROBOTNOKNOW = #{ROBOTNOKNOW,jdbcType=VARCHAR}
+    where ROBOTID = #{ROBOTID,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="robotinfo" resultMap="BaseResultMap">
+  	SELECT * FROM TBL_Robot
+  </select>
+  
+</mapper>

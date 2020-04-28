@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.LogMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.po.Log">
+    <id column="LOGID" jdbcType="VARCHAR" property="LOGID" />
+    <result column="USERID" jdbcType="VARCHAR" property="USERID" />
+    <result column="LOGMETHOD" jdbcType="VARCHAR" property="LOGMETHOD" />
+    <result column="LOGTIME" jdbcType="VARCHAR" property="LOGTIME" />
+    <result column="OPERATION" jdbcType="VARCHAR" property="OPERATION" />
+    <result column="URL" jdbcType="VARCHAR" property="URL" />
+    <result column="IP" jdbcType="VARCHAR" property="IP" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    LOGID, USERID, LOGMETHOD, LOGTIME, OPERATION, URL, IP
+  </sql>
+  <select id="selectByExample" parameterType="com.example.demo.po.LogExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from tbl_log
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_log
+    where LOGID = #{LOGID,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from tbl_log
+    where LOGID = #{LOGID,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.po.Log">
+    insert into tbl_log (LOGID, USERID, LOGMETHOD, 
+      LOGTIME, OPERATION, URL, 
+      IP)
+    values (#{LOGID,jdbcType=VARCHAR}, #{USERID,jdbcType=VARCHAR}, #{LOGMETHOD,jdbcType=VARCHAR}, 
+      #{LOGTIME,jdbcType=VARCHAR}, #{OPERATION,jdbcType=VARCHAR}, #{URL,jdbcType=VARCHAR}, 
+      #{IP,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.po.Log">
+    insert into tbl_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="LOGID != null">
+        LOGID,
+      </if>
+      <if test="USERID != null">
+        USERID,
+      </if>
+      <if test="LOGMETHOD != null">
+        LOGMETHOD,
+      </if>
+      <if test="LOGTIME != null">
+        LOGTIME,
+      </if>
+      <if test="OPERATION != null">
+        OPERATION,
+      </if>
+      <if test="URL != null">
+        URL,
+      </if>
+      <if test="IP != null">
+        IP,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="LOGID != null">
+        #{LOGID,jdbcType=VARCHAR},
+      </if>
+      <if test="USERID != null">
+        #{USERID,jdbcType=VARCHAR},
+      </if>
+      <if test="LOGMETHOD != null">
+        #{LOGMETHOD,jdbcType=VARCHAR},
+      </if>
+      <if test="LOGTIME != null">
+        #{LOGTIME,jdbcType=VARCHAR},
+      </if>
+      <if test="OPERATION != null">
+        #{OPERATION,jdbcType=VARCHAR},
+      </if>
+      <if test="URL != null">
+        #{URL,jdbcType=VARCHAR},
+      </if>
+      <if test="IP != null">
+        #{IP,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.po.Log">
+    update tbl_log
+    <set>
+      <if test="USERID != null">
+        USERID = #{USERID,jdbcType=VARCHAR},
+      </if>
+      <if test="LOGMETHOD != null">
+        LOGMETHOD = #{LOGMETHOD,jdbcType=VARCHAR},
+      </if>
+      <if test="LOGTIME != null">
+        LOGTIME = #{LOGTIME,jdbcType=VARCHAR},
+      </if>
+      <if test="OPERATION != null">
+        OPERATION = #{OPERATION,jdbcType=VARCHAR},
+      </if>
+      <if test="URL != null">
+        URL = #{URL,jdbcType=VARCHAR},
+      </if>
+      <if test="IP != null">
+        IP = #{IP,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where LOGID = #{LOGID,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.po.Log">
+    update tbl_log
+    set USERID = #{USERID,jdbcType=VARCHAR},
+      LOGMETHOD = #{LOGMETHOD,jdbcType=VARCHAR},
+      LOGTIME = #{LOGTIME,jdbcType=VARCHAR},
+      OPERATION = #{OPERATION,jdbcType=VARCHAR},
+      URL = #{URL,jdbcType=VARCHAR},
+      IP = #{IP,jdbcType=VARCHAR}
+    where LOGID = #{LOGID,jdbcType=VARCHAR}
+  </update>
+</mapper>

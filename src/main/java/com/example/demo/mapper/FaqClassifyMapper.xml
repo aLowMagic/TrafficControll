@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.FaqClassifyMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.po.FaqClassify">
+    <id column="FAQCLASSIFYID" jdbcType="VARCHAR" property="FAQCLASSIFYID" />
+    <result column="FAQCLASSIFYNAME" jdbcType="VARCHAR" property="FAQCLASSIFYNAME" />
+    <result column="FAQPARENTID" jdbcType="VARCHAR" property="FAQPARENTID" />
+    <result column="FAQCLASSIFYIMAGE" jdbcType="VARCHAR" property="FAQCLASSIFYIMAGE" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    FAQCLASSIFYID, FAQCLASSIFYNAME, FAQPARENTID, FAQCLASSIFYIMAGE
+  </sql>
+  <select id="selectByExample" parameterType="com.example.demo.po.FaqClassifyExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from tbl_faqclassify
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_faqclassify
+    where FAQCLASSIFYID = #{FAQCLASSIFYID,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from tbl_faqclassify
+    where FAQCLASSIFYID = #{FAQCLASSIFYID,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.po.FaqClassify">
+    insert into tbl_faqclassify (FAQCLASSIFYID, FAQCLASSIFYNAME, FAQPARENTID, 
+      FAQCLASSIFYIMAGE)
+    values (#{FAQCLASSIFYID,jdbcType=VARCHAR}, #{FAQCLASSIFYNAME,jdbcType=VARCHAR}, #{FAQPARENTID,jdbcType=VARCHAR}, 
+      #{FAQCLASSIFYIMAGE,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.po.FaqClassify">
+    insert into tbl_faqclassify
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="FAQCLASSIFYID != null">
+        FAQCLASSIFYID,
+      </if>
+      <if test="FAQCLASSIFYNAME != null">
+        FAQCLASSIFYNAME,
+      </if>
+      <if test="FAQPARENTID != null">
+        FAQPARENTID,
+      </if>
+      <if test="FAQCLASSIFYIMAGE != null">
+        FAQCLASSIFYIMAGE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="FAQCLASSIFYID != null">
+        #{FAQCLASSIFYID,jdbcType=VARCHAR},
+      </if>
+      <if test="FAQCLASSIFYNAME != null">
+        #{FAQCLASSIFYNAME,jdbcType=VARCHAR},
+      </if>
+      <if test="FAQPARENTID != null">
+        #{FAQPARENTID,jdbcType=VARCHAR},
+      </if>
+      <if test="FAQCLASSIFYIMAGE != null">
+        #{FAQCLASSIFYIMAGE,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.po.FaqClassify">
+    update tbl_faqclassify
+    <set>
+      <if test="FAQCLASSIFYNAME != null">
+        FAQCLASSIFYNAME = #{FAQCLASSIFYNAME,jdbcType=VARCHAR},
+      </if>
+      <if test="FAQPARENTID != null">
+        FAQPARENTID = #{FAQPARENTID,jdbcType=VARCHAR},
+      </if>
+      <if test="FAQCLASSIFYIMAGE != null">
+        FAQCLASSIFYIMAGE = #{FAQCLASSIFYIMAGE,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where FAQCLASSIFYID = #{FAQCLASSIFYID,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.po.FaqClassify">
+    update tbl_faqclassify
+    set FAQCLASSIFYNAME = #{FAQCLASSIFYNAME,jdbcType=VARCHAR},
+      FAQPARENTID = #{FAQPARENTID,jdbcType=VARCHAR},
+      FAQCLASSIFYIMAGE = #{FAQCLASSIFYIMAGE,jdbcType=VARCHAR}
+    where FAQCLASSIFYID = #{FAQCLASSIFYID,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="FirstClassify_robot" resultMap="BaseResultMap">
+		SELECT
+		FAQCLASSIFYID,FAQCLASSIFYNAME FROM TBL_FAQclassify WHERE
+		FAQPARENTID='0'
+	</select>
+	<select id="question_ClassifyListByName" resultType="String">
+		SELECT
+		FAQCLASSIFYID FROM TBL_FAQclassify WHERE FAQCLASSIFYNAME=#{0} AND
+		FAQPARENTID=#{1}
+	</select>
+	<select id="getClassifyNameById" resultType="String">
+		SELECT
+		FAQCLASSIFYNAME FROM TBL_FAQclassify WHERE FAQCLASSIFYID=#{0}
+	</select>
+	<select id="faq_parentId" resultType="String">
+		SELECT FAQPARENTID FROM
+		TBL_FAQclassify WHERE FAQCLASSIFYID=#{0}
+	</select>
+	<select id="getInfoById" resultMap="BaseResultMap">
+		SELECT * FROM
+		TBL_FAQclassify WHERE FAQCLASSIFYID=#{0}
+	</select>
+	<select id="SecondClassify_robot" resultMap="BaseResultMap">
+		SELECT
+		TBL_FAQclassify.FAQCLASSIFYID,TBL_FAQclassify.FAQCLASSIFYNAME,sum(TBL_FAQquestion.COLLECTION)
+		as a FROM TBL_FAQclassify,TBL_FAQquestion WHERE
+		TBL_FAQclassify.FAQCLASSIFYID=TBL_FAQquestion.FAQCLASSIFYID
+		AND
+		TBL_FAQclassify.FAQPARENTID=#{0} GROUP BY
+		TBL_FAQquestion.FAQCLASSIFYID ORDER BY a DESC
+	</select>
+	<select id="SecondClassify_robot2" resultMap="BaseResultMap">
+		SELECT
+		TBL_FAQclassify.FAQCLASSIFYID,TBL_FAQclassify.FAQCLASSIFYNAME,sum(TBL_FAQquestion.SCAN+TBL_FAQquestion.COLLECTION*10)
+		as a FROM TBL_FAQclassify,TBL_FAQquestion WHERE
+		TBL_FAQclassify.FAQCLASSIFYID=TBL_FAQquestion.FAQCLASSIFYID
+		AND
+		TBL_FAQclassify.FAQPARENTID=#{0} GROUP BY
+		TBL_FAQquestion.FAQCLASSIFYID ORDER BY a DESC
+	</select>
+	<select id="faq1_SecondClassify" resultMap="BaseResultMap">
+		SELECT
+		TBL_FAQclassify.FAQCLASSIFYID,TBL_FAQclassify.FAQCLASSIFYNAME,sum(SCAN)
+		as a FROM TBL_FAQquestion,TBL_FAQclassify WHERE
+		TBL_FAQquestion.FAQCLASSIFYID = TBL_FAQclassify.FAQCLASSIFYID
+		AND
+		TBL_FAQclassify.FAQPARENTID=#{0} AND TBL_FAQquestion.FAQSTATE = 2
+		GROUP BY TBL_FAQquestion.FAQCLASSIFYID
+		ORDER BY a DESC LIMIT 4
+
+	</select>
+	<select id="spider_ClassifyListByName" resultMap="BaseResultMap">
+		SELECT *
+		FROM TBL_FAQclassify WHERE FAQCLASSIFYNAME=#{0} AND
+		FAQPARENTID=#{1}
+	</select>
+	<select id="secondClassifyCount" resultType="int">
+		SELECT COUNT(1)
+		FROM TBL_FAQclassify WHERE FAQPARENTID=#{0}
+	</select>
+	<select id="getClassifyIdByName" resultType="String">
+		SELECT
+		FAQCLASSIFYID FROM TBL_FAQclassify WHERE FAQCLASSIFYNAME=#{0} AND
+		FAQPARENTID=#{1}
+	</select>
+  
+</mapper>

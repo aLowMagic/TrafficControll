@@ -28,6 +28,24 @@ function SendMsg()
     if (text.value != "" && text.value != null && text.value!="\n")
     {
         AddMsg('user', SendMsgDispose(text.value));
+        $.ajax({
+            type: "POST",
+            url:  "http://localhost:8080/chatWithRobot?",
+            dataType: "json",
+            data: {"comment": text.value, "from": null, "UserName": null},
+            success: function(e){
+                robotChat = e["robotChat"];
+                // alert(robotChat.length);
+                if(robotChat.length!=0) {
+                    answer = robotChat[0]["answer"];
+                }else{
+                    robotInfo = e["robotInfo"];
+                    answer = robotInfo[0]["rOBOTNOKNOW"];
+                }
+                AddMsg('robot', answer);
+            }
+
+        });
         text.value = "";
     }
     scrollToBottom();
@@ -73,7 +91,7 @@ function CreadMsg(user, content)
     newImg.setAttribute("src", "./static/assets/img/dsp.png");
     newP = document.createElement("p");
     newP.setAttribute("class", "msgText");
-    newP.innerText = content;
+    newP.innerHTML = content;
     newDiv.append(newImg);
     newDiv.append(newP);
     return newDiv;

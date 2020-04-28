@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.FaqQuestionMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.po.FaqQuestion">
+    <id column="FAQQUESTIONID" jdbcType="VARCHAR" property="FAQQUESTIONID" />
+    <result column="FAQTITLE" jdbcType="VARCHAR" property="FAQTITLE" />
+    <result column="FAQKEYWORDS" jdbcType="VARCHAR" property="FAQKEYWORDS" />
+    <result column="FAQCLASSIFYID" jdbcType="VARCHAR" property="FAQCLASSIFYID" />
+    <result column="COLLECTION" jdbcType="VARCHAR" property="COLLECTION" />
+    <result column="SCAN" jdbcType="VARCHAR" property="SCAN" />
+    <result column="MODIFYTIME" jdbcType="VARCHAR" property="MODIFYTIME" />
+    <result column="MODIFYNUMBER" jdbcType="VARCHAR" property="MODIFYNUMBER" />
+    <result column="FAQSTATE" jdbcType="INTEGER" property="FAQSTATE" />
+    <result column="USERID" jdbcType="VARCHAR" property="USERID" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.example.demo.po.FaqQuestion">
+    <result column="FAQDESCRIPTION" jdbcType="LONGVARCHAR" property="FAQDESCRIPTION" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    FAQQUESTIONID, FAQTITLE, FAQKEYWORDS, FAQCLASSIFYID, COLLECTION, SCAN, MODIFYTIME, 
+    MODIFYNUMBER, FAQSTATE, USERID
+  </sql>
+  <sql id="Blob_Column_List">
+    FAQDESCRIPTION
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.example.demo.po.FaqQuestionExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tbl_faqquestion
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.example.demo.po.FaqQuestionExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from tbl_faqquestion
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tbl_faqquestion
+    where FAQQUESTIONID = #{FAQQUESTIONID,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from tbl_faqquestion
+    where FAQQUESTIONID = #{FAQQUESTIONID,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.po.FaqQuestion">
+    insert into tbl_faqquestion (FAQQUESTIONID, FAQTITLE, FAQKEYWORDS, 
+      FAQCLASSIFYID, COLLECTION, SCAN, 
+      MODIFYTIME, MODIFYNUMBER, FAQSTATE, 
+      USERID, FAQDESCRIPTION)
+    values (#{FAQQUESTIONID,jdbcType=VARCHAR}, #{FAQTITLE,jdbcType=VARCHAR}, #{FAQKEYWORDS,jdbcType=VARCHAR}, 
+      #{FAQCLASSIFYID,jdbcType=VARCHAR}, #{COLLECTION,jdbcType=VARCHAR}, #{SCAN,jdbcType=VARCHAR}, 
+      #{MODIFYTIME,jdbcType=VARCHAR}, #{MODIFYNUMBER,jdbcType=VARCHAR}, #{FAQSTATE,jdbcType=INTEGER}, 
+      #{USERID,jdbcType=VARCHAR}, #{FAQDESCRIPTION,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.po.FaqQuestion">
+    insert into tbl_faqquestion
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="FAQQUESTIONID != null">
+        FAQQUESTIONID,
+      </if>
+      <if test="FAQTITLE != null">
+        FAQTITLE,
+      </if>
+      <if test="FAQKEYWORDS != null">
+        FAQKEYWORDS,
+      </if>
+      <if test="FAQCLASSIFYID != null">
+        FAQCLASSIFYID,
+      </if>
+      <if test="COLLECTION != null">
+        COLLECTION,
+      </if>
+      <if test="SCAN != null">
+        SCAN,
+      </if>
+      <if test="MODIFYTIME != null">
+        MODIFYTIME,
+      </if>
+      <if test="MODIFYNUMBER != null">
+        MODIFYNUMBER,
+      </if>
+      <if test="FAQSTATE != null">
+        FAQSTATE,
+      </if>
+      <if test="USERID != null">
+        USERID,
+      </if>
+      <if test="FAQDESCRIPTION != null">
+        FAQDESCRIPTION,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="FAQQUESTIONID != null">
+        #{FAQQUESTIONID,jdbcType=VARCHAR},
+      </if>
+      <if test="FAQTITLE != null">
+        #{FAQTITLE,jdbcType=VARCHAR},
+      </if>
+      <if test="FAQKEYWORDS != null">
+        #{FAQKEYWORDS,jdbcType=VARCHAR},
+      </if>
+      <if test="FAQCLASSIFYID != null">
+        #{FAQCLASSIFYID,jdbcType=VARCHAR},
+      </if>
+      <if test="COLLECTION != null">
+        #{COLLECTION,jdbcType=VARCHAR},
+      </if>
+      <if test="SCAN != null">
+        #{SCAN,jdbcType=VARCHAR},
+      </if>
+      <if test="MODIFYTIME != null">
+        #{MODIFYTIME,jdbcType=VARCHAR},
+      </if>
+      <if test="MODIFYNUMBER != null">
+        #{MODIFYNUMBER,jdbcType=VARCHAR},
+      </if>
+      <if test="FAQSTATE != null">
+        #{FAQSTATE,jdbcType=INTEGER},
+      </if>
+      <if test="USERID != null">
+        #{USERID,jdbcType=VARCHAR},
+      </if>
+      <if test="FAQDESCRIPTION != null">
+        #{FAQDESCRIPTION,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.po.FaqQuestion">
+    update tbl_faqquestion
+    <set>
+      <if test="FAQTITLE != null">
+        FAQTITLE = #{FAQTITLE,jdbcType=VARCHAR},
+      </if>
+      <if test="FAQKEYWORDS != null">
+        FAQKEYWORDS = #{FAQKEYWORDS,jdbcType=VARCHAR},
+      </if>
+      <if test="FAQCLASSIFYID != null">
+        FAQCLASSIFYID = #{FAQCLASSIFYID,jdbcType=VARCHAR},
+      </if>
+      <if test="COLLECTION != null">
+        COLLECTION = #{COLLECTION,jdbcType=VARCHAR},
+      </if>
+      <if test="SCAN != null">
+        SCAN = #{SCAN,jdbcType=VARCHAR},
+      </if>
+      <if test="MODIFYTIME != null">
+        MODIFYTIME = #{MODIFYTIME,jdbcType=VARCHAR},
+      </if>
+      <if test="MODIFYNUMBER != null">
+        MODIFYNUMBER = #{MODIFYNUMBER,jdbcType=VARCHAR},
+      </if>
+      <if test="FAQSTATE != null">
+        FAQSTATE = #{FAQSTATE,jdbcType=INTEGER},
+      </if>
+      <if test="USERID != null">
+        USERID = #{USERID,jdbcType=VARCHAR},
+      </if>
+      <if test="FAQDESCRIPTION != null">
+        FAQDESCRIPTION = #{FAQDESCRIPTION,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where FAQQUESTIONID = #{FAQQUESTIONID,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.example.demo.po.FaqQuestion">
+    update tbl_faqquestion
+    set FAQTITLE = #{FAQTITLE,jdbcType=VARCHAR},
+      FAQKEYWORDS = #{FAQKEYWORDS,jdbcType=VARCHAR},
+      FAQCLASSIFYID = #{FAQCLASSIFYID,jdbcType=VARCHAR},
+      COLLECTION = #{COLLECTION,jdbcType=VARCHAR},
+      SCAN = #{SCAN,jdbcType=VARCHAR},
+      MODIFYTIME = #{MODIFYTIME,jdbcType=VARCHAR},
+      MODIFYNUMBER = #{MODIFYNUMBER,jdbcType=VARCHAR},
+      FAQSTATE = #{FAQSTATE,jdbcType=INTEGER},
+      USERID = #{USERID,jdbcType=VARCHAR},
+      FAQDESCRIPTION = #{FAQDESCRIPTION,jdbcType=LONGVARCHAR}
+    where FAQQUESTIONID = #{FAQQUESTIONID,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.po.FaqQuestion">
+    update tbl_faqquestion
+    set FAQTITLE = #{FAQTITLE,jdbcType=VARCHAR},
+      FAQKEYWORDS = #{FAQKEYWORDS,jdbcType=VARCHAR},
+      FAQCLASSIFYID = #{FAQCLASSIFYID,jdbcType=VARCHAR},
+      COLLECTION = #{COLLECTION,jdbcType=VARCHAR},
+      SCAN = #{SCAN,jdbcType=VARCHAR},
+      MODIFYTIME = #{MODIFYTIME,jdbcType=VARCHAR},
+      MODIFYNUMBER = #{MODIFYNUMBER,jdbcType=VARCHAR},
+      FAQSTATE = #{FAQSTATE,jdbcType=INTEGER},
+      USERID = #{USERID,jdbcType=VARCHAR}
+    where FAQQUESTIONID = #{FAQQUESTIONID,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="SecondClassify_robot" resultMap="BaseResultMap">
+		SELECT TBL_FAQquestion.FAQQUESTIONID,TBL_FAQquestion.FAQTITLE 
+		FROM TBL_FAQquestion WHERE TBL_FAQquestion.FAQCLASSIFYID=#{0} 
+		ORDER BY TBL_FAQquestion.COLLECTION DESC LIMIT 3
+
+	</select>
+	<select id="pageTotal" resultType="String">
+		SELECT COUNT(1) FROM
+		TBL_FAQquestion WHERE FAQCLASSIFYID=#{0}
+
+	</select>
+	<select id="faqAudited" resultMap="BaseResultMap">
+		SELECT * FROM
+		TBL_FAQquestion ,tbl_faqclassify WHERE
+		TBL_FAQquestion.FAQCLASSIFYID =
+		tbl_faqclassify.FAQCLASSIFYID AND
+		FAQSTATE = #{1} AND
+		tbl_faqclassify.FAQPARENTID = #{0} ORDER BY
+		MODIFYTIME DESC LIMIT
+		#{2},#{3}
+
+	</select>
+	<select id="faq1_faqPersistences"  resultMap="BaseResultMap">
+		SELECT * FROM
+		TBL_FAQquestion WHERE FAQCLASSIFYID=#{0} AND FAQSTATE = #{1} ORDER BY
+		SCAN DESC LIMIT #{2}
+
+	</select>
+	<select id="faq1_faqPersistences2" resultMap="BaseResultMap">
+		SELECT * FROM
+		TBL_FAQquestion WHERE FAQCLASSIFYID=#{0} AND FAQSTATE = #{1}
+		ORDER BY
+		SCAN DESC LIMIT #{2},#{3}
+
+	</select>
+	<select id="faq2_faqlist" resultMap="BaseResultMap">
+		SELECT * FROM
+		TBL_FAQquestion WHERE FAQCLASSIFYID=#{0} AND FAQSTATE = #{1}
+		LIMIT
+		#{2},#{3}
+
+	</select>
+	<select id="getFaqQuestion" resultType="boolean">
+		SELECT
+		COUNT(FAQQUESTIONID) FROM TBL_FAQquestion WHERE FAQTITLE=#{0}
+
+	</select>
+	<select id="faq_userDynamics" resultMap="BaseResultMap">
+		SELECT * FROM
+		TBL_FAQquestion WHERE FAQSTATE = #{0} ORDER BY MODIFYTIME DESC
+		LIMIT
+		#{1}
+
+	</select>
+	<select id="faqPendingAudits" resultMap="BaseResultMap">
+		SELECT * FROM
+		TBL_FAQquestion WHERE FAQSTATE = #{0} ORDER BY MODIFYTIME DESC
+
+	</select>
+	<select id="faq_recommend_Limit" resultMap="BaseResultMap">
+		SELECT
+		FAQQUESTIONID, FAQTITLE, MODIFYTIME, FAQDESCRIPTION
+		,COLLECTION,SCAN,USERID,sum(CAST(SCAN AS SIGNED)+CAST(COLLECTION AS
+		SIGNED)*10) as a FROM TBL_FAQquestion WHERE FAQSTATE = #{0} GROUP BY
+		FAQQUESTIONID ORDER BY a DESC LIMIT #{1},#{2}
+
+	</select>
+	<select id="personal2_faq_Limit" resultMap="BaseResultMap">
+		SELECT * FROM
+		TBL_FAQquestion,TBL_FAQanswer WHERE
+		TBL_FAQquestion.FAQQUESTIONID=TBL_FAQanswer.FAQQUESTIONID AND
+		TBL_FAQquestion.USERID=#{0} AND FAQSTATE = #{1} ORDER BY
+		TBL_FAQquestion.MODIFYTIME DESC LIMIT #{2},#{3}
+
+	</select>
+	<select id="personal2_Ismodify" resultType="boolean">
+		SELECT
+		COUNT(FAQQUESTIONID) FROM TBL_FAQquestion WHERE FAQQUESTIONID=#{0}
+		AND
+		MODIFYNUMBER=#{1}
+
+	</select>
+	<select id="faq3_faqclassifyId" resultType="String">
+		SELECT
+		FAQCLASSIFYID FROM TBL_FAQquestion WHERE FAQQUESTIONID=#{0}
+
+	</select>
+	<select id="findUserIdByQuestionId"  resultType="String">
+		SELECT USERID
+		FROM TBL_FAQquestion WHERE FAQQUESTIONID=#{0}
+
+	</select>
+	<select id="getFaqQuestionInfo" resultMap="BaseResultMap">
+		SELECT * FROM
+		TBL_FAQquestion WHERE FAQQUESTIONID=#{0}
+	</select>
+	<select id="getFaqScan" resultType="String">
+		SELECT SCAN FROM
+		TBL_FAQquestion WHERE FAQQUESTIONID=#{0}
+	</select>
+	<select id="faq3_faqcontent" resultMap="BaseResultMap">
+		SELECT * FROM
+		TBL_FAQquestion WHERE FAQQUESTIONID=#{0} AND FAQSTATE = #{1}
+	</select>
+	<update id="deleteFAQ" parameterType="com.example.demo.po.FaqQuestion">
+		update TBL_FAQquestion SET
+		FAQSTATE = #{1} WHERE FAQQUESTIONID=#{0}
+	</update>
+	<update id="updateFAQScan" parameterType="com.example.demo.po.FaqQuestion">
+		update TBL_FAQquestion
+		SET TBL_FAQquestion.SCAN=#{1} WHERE
+		TBL_FAQquestion.FAQQUESTIONID=#{0}
+	</update>
+	<update id="updateFaqInfo1" parameterType="com.example.demo.po.FaqQuestion">
+		update TBL_FAQquestion
+		SET MODIFYNUMBER=#{1}, FAQSTATE = #{2} WHERE
+		FAQQUESTIONID=#{0}
+	</update>
+	<update id="updateFaqInfo" parameterType="com.example.demo.po.FaqQuestion">
+		update TBL_FAQquestion
+		SET FAQKEYWORDS=#{1} ,FAQDESCRIPTION=#{2} ,
+		MODIFYNUMBER=#{3}, FAQSTATE
+		= #{4} WHERE
+		TBL_FAQquestion.FAQQUESTIONID=#{0}
+	</update>
+	<select id="questionView" resultMap="BaseResultMap">
+		SELECT TBL_FAQquestion.FAQQUESTIONID,TBL_FAQquestion.FAQTITLE,
+		TBL_FAQquestion.COLLECTION,TBL_FAQquestion.SCAN,TBL_FAQquestion.MODIFYTIME,TBL_FAQquestion.FAQDESCRIPTION,
+		TBL_FAQquestion.USERID,sum(CAST(SCAN AS SIGNED)+CAST(COLLECTION AS
+		SIGNED)*10) as a FROM TBL_FAQquestion ,TBL_FAQclassify
+		WHERE TBL_FAQclassify.FAQPARENTID=#{0} AND TBL_FAQquestion.FAQCLASSIFYID = TBL_FAQclassify.FAQCLASSIFYID AND FAQSTATE = #{1} 
+		GROUP BY TBL_FAQquestion.FAQQUESTIONID 
+		ORDER BY a DESC LIMIT #{2},#{3}
+	</select>
+	<select id="faqInfo_limit" resultMap="BaseResultMap">
+		SELECT TBL_FAQquestion.FAQQUESTIONID
+		,TBL_FAQquestion.FAQTITLE,TBL_FAQquestion.FAQDESCRIPTION FROM
+		TBL_FAQquestion ,TBL_FAQclassify WHERE
+		TBL_FAQclassify.FAQPARENTID=#{0} AND TBL_FAQclassify.FAQCLASSIFYID =
+		TBL_FAQquestion.FAQCLASSIFYID AND FAQSTATE = 2 ORDER BY
+		TBL_FAQquestion.COLLECTION DESC LIMIT 4
+
+	</select>
+	<select id="faqadd_iscurrent" resultType="String">
+		SELECT TBL_FAQquestion.FAQQUESTIONID FROM TBL_FAQquestion,TBL_FAQanswer
+		WHERE TBL_FAQquestion.FAQQUESTIONID=TBL_FAQanswer.FAQQUESTIONID AND
+		TBL_FAQquestion.FAQTITLE=#{0} AND TBL_FAQanswer.USERID=#{1}
+
+	</select>
+	<select id="personal2_faq_Limit_Time" resultMap="BaseResultMap">
+		SELECT * FROM TBL_FAQquestion,TBL_FAQanswer WHERE
+		TBL_FAQquestion.FAQQUESTIONID=TBL_FAQanswer.FAQQUESTIONID AND
+		TBL_FAQquestion.USERID=#{0} AND
+		STR_TO_DATE(TBL_FAQquestion.MODIFYTIME,'%Y-%m-%d%H:%i')&lt;STR_TO_DATE(#{3},'%Y-%m-%d %H:%i') ORDER BY
+		TBL_FAQquestion.MODIFYTIME DESC LIMIT #{1},#{2}
+
+	</select>
+	<select id="titleIsExist" resultMap="BaseResultMap">
+		SELECT * FROM TBL_FAQquestion WHERE FAQTITLE=#{0} AND USERID=#{1}
+
+	</select>
+	<select id="getFaq"  resultMap="BaseResultMap">
+		SELECT * FROM TBL_FAQquestion
+		LIMIT 200
+	</select>
+	<select id="getFaqTotal" resultMap="BaseResultMap">
+		SELECT * FROM
+		TBL_FAQquestion
+	</select>
+	<select id="getQuestionCount"  resultType="int">
+		SELECT COUNT(1) FROM
+		TBL_FAQquestion WHERE FAQCLASSIFYID=#{0}
+	</select>
+	<select id="getCount" resultType="int">
+		SELECT COUNT(1) FROM
+		TBL_FAQquestion WHERE FAQSTATE = #{0}
+	</select>
+	<select id="faqAuditedCount" resultType="int">
+		SELECT COUNT(1) FROM TBL_FAQquestion ,TBL_FAQclassify WHERE
+		TBL_FAQclassify.FAQPARENTID=#{0} AND TBL_FAQquestion.FAQCLASSIFYID =
+		TBL_FAQclassify.FAQCLASSIFYID AND FAQSTATE = #{1}
+	</select>
+	
+	
+  
+</mapper>

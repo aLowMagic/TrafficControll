@@ -1,6 +1,8 @@
 package com.example.demo.storage;
 //import com.meituan.ai.crawler.config.MysqlConfig;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
@@ -19,6 +21,8 @@ import java.util.*;
 public class MysqlStorage {
     @Autowired
     private JdbcTemplate jdbcTemplate;
+
+    Logger logger = LoggerFactory.getLogger(MysqlStorage.class);
 
     public boolean insert(List<Map<String,String>> data,String tableName) throws SQLException {
         if(!data.isEmpty()){
@@ -112,8 +116,9 @@ public class MysqlStorage {
     public List<Map<String,Object>> select(String tableName)throws SQLException{
         //查询某张表的爬取数据结果集
         String sql = "select * from "+tableName;
-
+        logger.info("sql: "+sql);
         List<Map<String,Object>> rs = jdbcTemplate.queryForList(sql);
+        logger.info("select sql's result's length: "+String.valueOf(rs.size()));
         return rs;
     }
 

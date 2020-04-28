@@ -1,0 +1,1531 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>智能小朵</title>
+    <link href="http://localhost:8080/org.xjtusicd3.partner/ico/zyq.ico" type="image/x-icon" rel="shortcut icon">
+    <link rel="stylesheet" type="text/css" href="../static/assets/chat/new/front/style/reset.css">
+    <link rel="stylesheet" type="text/css" href="../static/assets/chat/new/front/style/util-rb.css">
+    <link rel="stylesheet" type="text/css" href="../static/assets/chat/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../static/assets/chat/css/header.css">
+    <link rel="stylesheet" type="text/css" href="../static/assets/chat/css/body.css">
+    <link rel="stylesheet" type="text/css" href="../static/assets/chat/css/detail.css">
+    <link rel="stylesheet" type="text/css" href="../static/assets/chat/css/jq22-rb.css">
+    <link rel="stylesheet" type="text/css" href="../static/assets/chat/css/robot.css">
+    <link rel="stylesheet" type="text/css" href="../static/assets/chat/css/chat-rb.css">
+    <link rel="stylesheet" type="text/css" href="../static/assets/chat/css/waves.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/assets/chat/css/ui.css">
+    <link rel="stylesheet" type="text/css" href="../static/assets/chat/css/style-rb.css">
+    <link rel="stylesheet prefetch" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
+    <script type="text/javascript" src="../static/assets/js/yf/xiaoduo/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../static/assets/js/yf/xiaoduo/jquery.aimmenu.js"></script>
+    <script type="text/javascript" src="../static/assets/js/yf/xiaoduo/knockout.js"></script>
+    <script type="text/javascript" src="../static/assets/js/yf/xiaoduo/chat.js"></script>
+    <script type="text/javascript" src="../static/assets/js/yf/xiaoduo/browserEvent.js"></script>
+    <script>
+        /* 热点问题分类 */
+        $(function(){
+            var navData=[{"title":"烟草运维","id":"speedMenu1","content":[{"title":"其它","content":[{"faqTitle":"测试faq标题"},{"faqTitle":"烟草公司"},{"faqTitle":"中国烟草"}]},{"title":"人事劳动和社会保障","content":[{"faqTitle":"人力资源和社会保障局是做些什么工作的"},{"faqTitle":"烟草人事调动通知"}]},{"title":"财务管理","content":[{"faqTitle":"如何提高烟草行业财务精益管理，降本增效"}]},{"title":"烟草专卖","content":[{"faqTitle":"标题ceshi"},{"faqTitle":"稽查员如何做好烟草专卖稽查工作"}]},{"title":"市场营销","content":[{"faqTitle":"烟草商业企业如何提升服务营销能力？"}]},{"title":"物流系统","content":[{"faqTitle":"为什么烟草行业的物流发展比较快？"}]}]},{"title":"m","id":"speedMenu2","content":[{"title":"在线音/视频播放","content":[{"faqTitle":"Windows 8下为Metro界面自带音乐，视频和图片软件添加其他位置存储媒体"},{"faqTitle":"使用暴风影音播放时如何跳过片头片尾"},{"faqTitle":"使用指纹开机无法直接进入桌面，重装指纹软件报错的解决方案"}]},{"title":"音画不同步","content":[{"faqTitle":"IdeaPad Y510笔记本在XP系统下如何开启Dolby音效？"},{"faqTitle":"xxxxxx"},{"faqTitle":"zzzzz"}]}]},{"title":"BIOS","id":"speedMenu3","content":[{"title":"BIOS设置/模拟","content":[{"faqTitle":"小新AIR13、AIR13Pro如何开启或关闭USB关机充电功能"},{"faqTitle":"小新Air13、Air12、Air13pro如何关闭快捷键？"},{"faqTitle":"Q77主板设置BIOS密码支持的密码字符类型和最长密码位数"}]},{"title":"BIOS更新","content":[{"faqTitle":"ThinkPad Edge E440 E540 无法正常使用 “Fn+P” 快捷键"},{"faqTitle":"如何升级主板BIOS"},{"faqTitle":"ThinkPad Twist S230u 自动旋转按钮失效的问题解决方案"}]},{"title":"清理BIOS","content":[{"faqTitle":"联想笔记本（Insyde H2o类型）如何设置、修改、清除bios硬盘密码"},{"faqTitle":"联想昭阳、扬天笔记本如何设置、修改、清除bios硬盘密码"},{"faqTitle":"如何清除bios密码"}]}]},{"title":"操作系统","id":"speedMenu4","content":[{"title":"应用商店问题","content":[{"faqTitle":"如何彻底卸载Windows 8自带的metro应用"},{"faqTitle":"Windows 8系统下metro界面应用无法打开并且有叉号"},{"faqTitle":"如何清除Windows 8商店缓存"}]},{"title":"磁盘分区","content":[{"faqTitle":"什么是VoLTE"},{"faqTitle":"如何查看SureHA G2软件的版本信息？"},{"faqTitle":"U盘引导安装Windows 8报错“Windows无法安装到这个磁盘，在EFI系统上只能安装在GPT磁盘”"}]},{"title":"系统还原","content":[{"faqTitle":"Windows XP下如何进行系统还原"},{"faqTitle":"Win10陷入无限重启修复的解决方法"},{"faqTitle":"如果“系统还原”不能工作，需要采取哪些步骤"}]},{"title":"激活问题","content":[{"faqTitle":"预装的Win10家庭中文版系统如何激活"},{"faqTitle":"如何查Win10 授权及相关信息"},{"faqTitle":"aida64查看密钥（可查看其他重要参数）"}]},{"title":"系统登录问题","content":[{"faqTitle":"Windows 10如何清除用户登录密码"},{"faqTitle":"开启Win10组合键解锁屏幕方法"},{"faqTitle":"电脑忘记开机密码的解决方法参考"}]},{"title":"浏览器","content":[{"faqTitle":"Internet Explorer 8 网页加载速度变慢怎么办"},{"faqTitle":"禁止浏览器使用internet选项"},{"faqTitle":"Win7系统安装Internet Explorer 10时提示在安装前需要更新的解决方案"}]},{"title":"系统安装与升级","content":[{"faqTitle":"关闭Aero特效功能"},{"faqTitle":"如何在移动硬盘上安装Win8 "},{"faqTitle":"Windows 8激活错误代码解析"}]},{"title":"程序安装与卸载","content":[{"faqTitle":"Windows启动过程中提示警告：“致命错误C0000034，正在更新操作……”"},{"faqTitle":"在安装卡巴斯基时，装到一半就会出现无法访问 Windows installer服务"},{"faqTitle":"Windows 7系统如何卸载已安装的程序？"}]},{"title":"系统应用操作","content":[{"faqTitle":"在“开始”屏幕上找不到 Internet Explorer 10 图标"},{"faqTitle":"SCVMM 2008 R2功能及安装需求"},{"faqTitle":"如何去除Windows 8系统图标上的小黄锁"}]},{"title":"清理垃圾","content":[{"faqTitle":"Windows Vista系统盘空间紧张的解决方案"},{"faqTitle":"告诉你告诉你手机卡、慢的原因和流畅使用手机的N个技巧​"},{"faqTitle":"怎样进行磁盘碎片整理"}]},{"title":"开关机问题","content":[{"faqTitle":"安装有摄像头设备的情况下，Windows不能正常关机"},{"faqTitle":"Win10的紧急重启介绍"},{"faqTitle":"Windows XP无法正常关机"}]},{"title":"系统数据恢复","content":[{"faqTitle":"Onekey Ghost备份恢复系统"},{"faqTitle":"从硬盘分区往其他分区复制文件的时候提示“一个意外错误使你无法复制该文件……”"},{"faqTitle":"突发电脑故障应急处理方法"}]},{"title":"蓝屏死机","content":[{"faqTitle":"蓝屏死机处理方法"},{"faqTitle":"Windows 2000蓝屏死机故障分析与排除"},{"faqTitle":"笔记本显示屏种类介绍"}]},{"title":"输入法问题","content":[{"faqTitle":"Win10系统下如何更改默认输入法"},{"faqTitle":"Windows 8自带的中文输入法以及大部分输入法全半角切换"},{"faqTitle":"Win10安装第三方输入法出现无法兼容问题怎么办？"}]},{"title":"用户账户","content":[{"faqTitle":"Windows 7系统如何设置用户账户密码？"},{"faqTitle":"Windows 8如何清除用户帐户的密码"},{"faqTitle":"Windows 8如何设置管理员帐户"}]}]},{"title":"第三方软件","id":"speedMenu5","content":[{"title":"QQ","content":[{"faqTitle":"能上QQ，不能打开网页的解决方案"},{"faqTitle":"QQ视频如何设置正确的摄像头"},{"faqTitle":"查看谁QQ在线对你隐身"}]},{"title":"360","content":[{"faqTitle":"U盘容量检测工具360保镖介绍"},{"faqTitle":"安装应用软件或文件时，在桌面自动出现很多其它的快捷图标"},{"faqTitle":"家悦s5 系列快速安装指南 V1.0（Win8.1）"}]},{"title":"暴风影音","content":[{"faqTitle":"手机版暴风影音如何扫描添加本地视频"},{"faqTitle":"如何清除暴风影音中的历史记录"},{"faqTitle":"怎样使暴风影音转换视频格式或转码？"}]},{"title":"其它","content":[{"faqTitle":"bluestacks 模拟器安装不上"},{"faqTitle":"PPS使用后屏幕有黑影"},{"faqTitle":"如何设置爱奇艺离线观看任务数"}]}]},{"title":"显示故障","id":"speedMenu6","content":[{"title":"花屏","content":[{"faqTitle":"IdeaPad G470在外接电源花屏解决一例"},{"faqTitle":"LGL-CSSD-03-J-TB-117SIS650双显故障"},{"faqTitle":"上网看电影时，画面有马赛克现象的一个解决方案"}]},{"title":"闪屏","content":[{"faqTitle":"IdeaCentre B350 Win8系统运行英雄联盟闪屏"},{"faqTitle":"T60 ATI显示卡的机器播放视频闪动"},{"faqTitle":"943GML系列芯片组笔记本在Vista系统下液晶屏显示瞬间“闪烁”现象描述"}]},{"title":"3D","content":[{"faqTitle":"笔记本3D显示辅助判断方法"}]},{"title":"亮线","content":[{"faqTitle":"LCD显示器上有亮线"},{"faqTitle":"ThinkPad VISTA启动时屏幕上有水平的亮线闪烁"},{"faqTitle":"Win7系统显示器出现一条亮线怎么回事？"}]},{"title":"偏色","content":[{"faqTitle":"Lenovo Yoga 3 Pro开机登录系统后屏幕显示偏黄、偏暗"},{"faqTitle":"显示器显示偏色"},{"faqTitle":"显示器偏色或变色"}]},{"title":"分辨率问题","content":[{"faqTitle":"宽屏笔记本显示设置相关问题"},{"faqTitle":"视频指导：小新Air13高分辨率下显示模糊怎么办"},{"faqTitle":"视频指导：小新Air13 Pro高分辨率下显示模糊怎么办"}]},{"title":"漏光","content":[{"faqTitle":"LCD显示屏有漏光现象"},{"faqTitle":"我的电视在关灯以后屏幕有些漏光是怎么回事？"},{"faqTitle":"显示器漏光的原因及如何检测"}]},{"title":"黑屏","content":[{"faqTitle":"智能电视开不了机并且指示灯一直亮红灯怎么办？"},{"faqTitle":"ThinkCentre A系列等 dos状态无显示解决方案"},{"faqTitle":"ThinkPad笔记本在注销或切换用户时，屏幕亮度自动变暗"}]}]},{"title":"驱动程序帮助","id":"speedMenu7","content":[{"title":"打印机","content":[{"faqTitle":"联想小新打印机如何通过WIFI安装驱动？"},{"faqTitle":"M7020/M7030WINXP系统下载驱动安装方法"},{"faqTitle":"Windows 98 SE下LJ1900打印机驱动安装方法"}]},{"title":"快捷键＆电源管理","content":[{"faqTitle":"天骄SI机型在VISTA系统下如何安装BOX驱动？"},{"faqTitle":"邮件关怀---TPM驱动安装"},{"faqTitle":"安装操作系统后，在设备管理器中总有一个未知设备无法安装"}]},{"title":"主板芯片组","content":[{"faqTitle":"昭阳E280L WinXP系统驱动程序"},{"faqTitle":"新圆梦F系列机型改装Win XP系统后找不到驱动了"},{"faqTitle":"Intel AHCI 驱动安装方法及常见问题汇总"}]},{"title":"显卡","content":[{"faqTitle":"IdeaPad V490u 安装Windows 8系统出现屏幕错位"},{"faqTitle":"L510 intel集成显卡报'ialmrnt5显卡驱动程序停止运行'"},{"faqTitle":"Ideapad V470 Windows 7系统下安装独显驱动提示NVI2.DLL报错"}]},{"title":"网卡","content":[{"faqTitle":"IdeaPad Yoga 13使用无线上网时蓝牙耳机或蓝牙鼠标间歇性卡顿"},{"faqTitle":"Lenovo G550在Windows XP操作系统下网卡驱动安装方法"},{"faqTitle":"Q45主板的网络唤醒的实现"}]},{"title":"声卡","content":[{"faqTitle":"播放的声音时断时续"},{"faqTitle":"声卡驱动报错No Appropriate Driver to be installed"},{"faqTitle":"预装Windows 8系统升级8.1系统以后声音异常的临时解决方案"}]},{"title":"其它设备","content":[{"faqTitle":"LJ3803DN如何安装USB驱动和网络驱动"},{"faqTitle":"新扬天机型标配USB键盘功能键驱动问题注意事项"},{"faqTitle":"Win10下安装驱动提示没有数字签名认证"}]},{"title":"无线网卡","content":[{"faqTitle":"B500一体机，在Windows XP系统下，bcm无线网卡驱动下载及安装过程"},{"faqTitle":"无线应用指南"},{"faqTitle":"B305一体机，在Windows XP系统下，Atheros无线网卡驱动下载及安装过程"}]},{"title":"摄像头","content":[{"faqTitle":"lenovo系列笔记本摄像头倒置180度的案例分析"},{"faqTitle":"Intel RealSense 3D摄像头介绍"},{"faqTitle":"联想ET360摄像头应用程序帮助文档"}]}]},{"title":"一键恢复","id":"speedMenu8","content":[{"title":"备份","content":[{"faqTitle":"一键恢复6.0备份时候的三种压缩模式的区别"},{"faqTitle":"Think产品如何使用Rescue and Recovery 高级版制作备份（XP Vista）（适用于RR3.0-4.0）"},{"faqTitle":"如何删除一键恢复的备份文件"}]},{"title":"恢复","content":[{"faqTitle":"一键恢复6.0和卡巴斯基2009冲突备份时无法完成"},{"faqTitle":"一键恢复7.0系统恢复指导"},{"faqTitle":"Yoga平板如何恢复出厂设置？"}]},{"title":"设置","content":[{"faqTitle":"部分一键恢复5.0机型与Vista SP1兼容问题的联机检查解决方案"},{"faqTitle":"联想笔记本一键恢复5.0机型，windows系统下有时候会提示“动态缓冲不足”"},{"faqTitle":"联想笔记本电脑一键恢复5.0与VISTA SP1兼容性问题预防及恢复方案"}]}]},{"title":"随机软件","id":"speedMenu9","content":[{"title":"电源管理","content":[{"faqTitle":"IdeaPad U110电源管理的超级节能模式使用方法"},{"faqTitle":"K46随机联想电源管理如何查看版本信息和电池信息？"},{"faqTitle":"如何调节显卡的电源模式"}]},{"title":"一键影音","content":[{"faqTitle":"启天主机使用视频点播系统出现异常声响问题"},{"faqTitle":"联想100分学校背景音乐的存放路径"},{"faqTitle":"键盘上的一键影音指示灯不亮如何处理？"}]},{"title":"联想云盘","content":[{"faqTitle":"“联想云盘服务器连接异常”的解决方法 "},{"faqTitle":"小新Air中联想云盘的使用说明"},{"faqTitle":"联想电脑管家绑定云盘帐号如何查看"}]},{"title":"VIBE手机应用","content":[{"faqTitle":"VIBE手机ROM特色功能：茄子快传之一键换机"},{"faqTitle":"VIBE手机ROM特色功能：复合触控功能"},{"faqTitle":"VIBE手机ROM特色功能：如何设置WLAN位置绑定"}]},{"title":"一键恢复","content":[{"faqTitle":"Vista系统一键恢复原厂状态系统启动设定界面"},{"faqTitle":"一键恢复7.0无法正常进入的解决方案 "},{"faqTitle":"商用台式主机OKR7.2使用手册"}]},{"title":"手机应用","content":[{"faqTitle":"安卓手机如何隐藏和开启开发人员选项"},{"faqTitle":"如何使用豌豆荚更换手机铃声"},{"faqTitle":"联想G808手机使用手册、PC同步软件"}]},{"title":"其他随机软件","content":[{"faqTitle":"ThinkPad X201 Win7系统摄像头图像倒置的解决方案"},{"faqTitle":"Ideapad Y450自带壁纸软件Alive Idea Desktop的简单说明"},{"faqTitle":"如何设置金山词霸2006程序打开后自动在右下角任务栏上显示此程序的图标？"}]},{"title":"硬盘保护系统","content":[{"faqTitle":"联想硬盘保护系统EDU9.0.0 网络控制工具基础版（EDU驱动）"},{"faqTitle":"家悦D机型，联想100分学校同步教学的支持软件在哪可以下载？"},{"faqTitle":"EDU7.6 驱动程序以及用户手册"}]},{"title":"R＆R应急恢复系统","content":[{"faqTitle":"出厂未安装Windows下RNR程序的ThinkPad E10笔记本如何一键恢复"},{"faqTitle":"ThinkVantage R&#38;R,Br_funcs.exe文件占用80%CPU资源"},{"faqTitle":"ThinkPad电脑如何用RNR已备份的系统进行一键恢复"}]},{"title":"人像识别","content":[{"faqTitle":"人像识别VeriFace3.5版本安装时看不到按钮提示"},{"faqTitle":"人像识别软件 Veriface V4.0新增功能介绍"},{"faqTitle":"如何在YouCam中使用摄像头摄录视频"}]},{"title":"指纹识别","content":[{"faqTitle":"ThinkPad如何安装或卸载指纹识别软件"},{"faqTitle":"打开私密空间提示“系统无法找到私密空间镜像文件”报错的解决方案"},{"faqTitle":"如何禁用指纹的开机提示"}]},{"title":"office软件","content":[{"faqTitle":"我如何设置开机自动登录Lync？"},{"faqTitle":"安装Microsoft Office 2010后为何会多出一个Q盘分区"},{"faqTitle":"如何使用 Excel 2010 的记录单功能？"}]}]},{"title":"病毒与安全","id":"speedMenu10","content":[{"title":"漏洞与防护","content":[{"faqTitle":"适用于笔记本电脑的 Lenovo Service Engine（LSE）BIOS安全公告"},{"faqTitle":"在长时间的广播风暴期间，某些ThinkServer系统可能会重置为缺省配置"},{"faqTitle":"高级管理模块（AMM）中基于DOM的跨站脚本攻击漏洞"}]},{"title":"私密文件柜","content":[{"faqTitle":"扬天私密文件柜的使用方法"},{"faqTitle":"缺少dll文件导致打开私密文件柜时没反应的解决方案"},{"faqTitle":"Portal3.x&#38;Portal4.x&#38;Portal5.x&#38;Portal6.x私密文件柜帮助文档及常见问题"}]},{"title":"杀毒软件","content":[{"faqTitle":"Think产品随机预装的McAfee杀毒软件使用的方法介绍"},{"faqTitle":"Win10中了冰河木马的解决方法"},{"faqTitle":"Windows 10下如何隐藏“启用病毒防护”等提示"}]},{"title":"文件加密","content":[{"faqTitle":"Windows 7系统下如何对文件或者文件夹进行EFS加密操作"},{"faqTitle":"在 Vista 系统中实现加密文件或文件夹"},{"faqTitle":"Win7系统下如何监控有人使用过自己的电脑"}]}]},{"title":"上网问题","id":"speedMenu11","content":[{"title":"唤醒断网","content":[{"faqTitle":"Win7系统上网过程中提示网络闲置20分钟，是否要继续还是断开？"},{"faqTitle":"WinXP从待机状态唤醒后网络连接断开"},{"faqTitle":"Win7系统如何让电脑在休眠时不断网"}]},{"title":"下载文件","content":[{"faqTitle":"使用BT下载软件的相关问题"},{"faqTitle":"电脑不能下载东西的几种常见情况和解决办法"},{"faqTitle":"如何禁止电脑下载东西或者安装软件"}]},{"title":"4G/3G上网","content":[{"faqTitle":"Lenovo MIIX系列3G版SIM卡插入和3G连接操作指导"},{"faqTitle":"联想昭阳A820系列笔记本电脑之“移动伴侣”用户手册 V1.0"},{"faqTitle":"3G上网经常掉线案例分析"}]},{"title":"无线搜不到","content":[{"faqTitle":"无线无法搜索到信号怎么办？"},{"faqTitle":"不能搜索到无线信号或找不到无线网络"},{"faqTitle":"win8无线网络受限"}]},{"title":"无线连不上","content":[{"faqTitle":"本地连接和无线网络连接丢失，设备管理器中驱动显示正常"},{"faqTitle":"S2003W如何配置无线网络"},{"faqTitle":"无线认证提示“设备所有权密码”的解决方案"}]},{"title":"网络设置","content":[{"faqTitle":"联想笔记本无法收到路由器发出的5G信号的原因"},{"faqTitle":"Windows 8 操作系统中如何修改网络类型"},{"faqTitle":"Intel 802.11AC无线网卡在使用Win10共享无线热点的时候会提示正在通过5G共享，无法使用2.4G共享"}]},{"title":"有线连不上","content":[{"faqTitle":"Windows XP SP2 无法连接到选定网络，网络可能不在区域中"},{"faqTitle":"上网错误代码718、619、691、676、720、769、678、815介绍及解决方法"},{"faqTitle":"T/R280 G2、T/R350 G6C在拔掉网线后系统报警灯绿色闪烁"}]},{"title":"网页打不开","content":[{"faqTitle":"能搜索到AP，但不能连接到AP"},{"faqTitle":"YOGA机型Win10系统使用安卓手机USB共享网络上网卡慢"},{"faqTitle":"通过宽带（ADSL）连接上网提示找不到netcfg.hlp"}]},{"title":"宽带上网","content":[{"faqTitle":"Win10系统提示网卡驱动不能用的原因和解决方法"},{"faqTitle":"宽带连接频繁掉线"},{"faqTitle":"ADSL频繁掉线故障分析"}]},{"title":"VPN/虚拟连接","content":[{"faqTitle":"用户咨询在VISTA下没有找到超级终端？"},{"faqTitle":"Win10系统笔记本如何畅享Wifi共享"},{"faqTitle":"什么是VPN（VPN的含义）？"}]},{"title":"共享上网","content":[{"faqTitle":"在Windows XP下如何配置无线网络"},{"faqTitle":"局域网中机器同时不能连网"},{"faqTitle":"如何在系统下使用cmd命令关闭无线网络（非共享网络）"}]},{"title":"有线灯不亮","content":[{"faqTitle":"旭日210网卡无法启用，网卡指示灯不亮"},{"faqTitle":"网卡灯正常，但却不能连入网络"},{"faqTitle":"主板集成的Intel 82563EB千兆网卡指示灯异常的解决方案"}]}]},{"title":"设备应用","id":"speedMenu12","content":[{"title":"触摸屏","content":[{"faqTitle":"天骄AX机型前面板有一块VFD屏幕，什么是VFD？"},{"faqTitle":"怎么安装数位板？数位板怎么用？"},{"faqTitle":"联想三能手写板软件的安装和使用"}]},{"title":"3D眼镜","content":[{"faqTitle":"智能电视S9、S52的3D眼镜配对方法及3D眼镜指示灯不亮的解决方法"},{"faqTitle":"使用Nivdia M4000显卡配合nvidia 3d vision眼镜实现3D显示的基本要求"},{"faqTitle":"联想智能电视3D眼镜使用方法"}]},{"title":"鼠标","content":[{"faqTitle":"ZTM600无线激光鼠标简介"},{"faqTitle":"2005暑促锋行K机型标配罗技MX310（六键）光电鼠标安装及使用方法"},{"faqTitle":"Win7系统下鼠标右键失效的解决方法"}]},{"title":"手机连接","content":[{"faqTitle":"我的手机无法控制空气净化器d600是什么原因？"},{"faqTitle":"ET960如何把通话记录中的电话复制到SIM卡中?"},{"faqTitle":"乐phone手机如何快速开关无线设备设置亮度"}]},{"title":"外接显示","content":[{"faqTitle":"55i连接普通机顶盒或DVD的方法"},{"faqTitle":"通过HDMI接口连接电视无声音的处理思路"},{"faqTitle":"Win10技巧：如何确定电脑是否适用Hyper-V虚拟机？"}]},{"title":"触控板","content":[{"faqTitle":"Lenovo G475/G470新版本Synaptics触控板实现触击功能解决方案"},{"faqTitle":"昭阳K41/K42系列触控板左右按键颠倒的解决方案"},{"faqTitle":"触摸主机的金属部分有麻手（或触电）的感觉"}]},{"title":"硬盘","content":[{"faqTitle":"关于笔记本使用的混合硬盘SSHD的简单介绍"},{"faqTitle":"X100E不认硬盘的案例分析"},{"faqTitle":"笔记本换硬盘详细流程图"}]},{"title":"USB","content":[{"faqTitle":"产品介绍 U盘 (Memory keys - 128MB USB 2.0 High Speed Memory Key)"},{"faqTitle":"USB鼠标无法使用的解决思路"},{"faqTitle":"Windows 7插入U盘或SD卡自动播放对话框无法弹出的解决方案"}]},{"title":"显示器","content":[{"faqTitle":"电脑显示器不亮主机正常"},{"faqTitle":"联想显示器按键定义和OSD菜单界面"},{"faqTitle":"LT1952wA用户手册及驱动"}]},{"title":"蓝牙","content":[{"faqTitle":"昭阳E390通过蓝牙与手机相连并传送数据的配置操作指导"},{"faqTitle":"Win7系统下如何使用蓝牙耳机收听音乐"},{"faqTitle":"ThinkPad 配置Realtek 蓝牙/Wifi combo卡的机器出现wifi连接问题的操作指导"}]},{"title":"部件参数","content":[{"faqTitle":"数码相机SOSHOW500如何修改日期及时间？"},{"faqTitle":"Lenovo 昭阳K27、K47、E47用户手册"},{"faqTitle":"家悦C/CE系列机型用户手册"}]},{"title":"麦克风","content":[{"faqTitle":"如何启用后置麦克风"},{"faqTitle":"电脑麦克风噪音的解决方法"},{"faqTitle":"Vista系统下如何设置麦克风的录音音量大小？"}]},{"title":"内存","content":[{"faqTitle":"电脑会自动开机启动，是什么问题？"},{"faqTitle":"安装内存"},{"faqTitle":"如何快速判断机器是否配置低电压内存和CPU"}]},{"title":"键盘","content":[{"faqTitle":"扬天LEOS机型4键键盘驱动安装设置"},{"faqTitle":"Fn功能键列表"},{"faqTitle":"S230U 键盘布局"}]},{"title":"指纹","content":[{"faqTitle":"联想B4400 M4400 M5400无法使用指纹识别登录Windows 的解决方案"},{"faqTitle":"Lenovo笔记本电脑如何使用指纹登录到需要用户帐号的应用程序或网站"},{"faqTitle":"T400s如何开启或关闭指纹指示灯"}]},{"title":"笔记本电池","content":[{"faqTitle":"产品介绍 电池 (Batteries_chargers - ThinkPad A21eA22e NiMH Battery)"},{"faqTitle":"产品介绍 电池 (Batteries_chargers - ThinkPad A30 Series Li-Ion Battery)"},{"faqTitle":"笔记本电池只能充电到95%-99%之间无法充至100%的原因和处理方案"}]},{"title":"打印机/扫描仪连接","content":[{"faqTitle":"联想3系列、2系列彩色喷墨打印机（单按键）如何实现脱机自检页的操作"},{"faqTitle":"LJ7600N网络打印机，如何通过随机软件进行网卡的设置？"},{"faqTitle":"LJ6700DN的纸盒如何从A4扩成A3？"}]},{"title":"主板","content":[{"faqTitle":"31003260主板使用指南(MS6137ML2 V1.0)"},{"faqTitle":"如何执行CMOS保护设置？"},{"faqTitle":"NetVista 6840 -- 主板示意图"}]}]},{"title":"显卡切换与调试","id":"speedMenu13","content":[{"title":"Nvidia双显卡切换","content":[{"faqTitle":"IdeaPad U450 双显卡如何切换？"},{"faqTitle":"ThinkPad T410s运行某些软件的时候禁用双显卡切换功能"},{"faqTitle":"如何使用NVIDIA OPTIMUS技术进行双显卡切换？"}]},{"title":"AMD双显卡切换","content":[{"faqTitle":"ThinkPad E575 AMD显卡控制台切换经典界面"},{"faqTitle":"标配AMD双显卡笔记本机型双显卡切换方法"},{"faqTitle":"G470A 双显卡切换方法补充"}]},{"title":"双屏显示","content":[{"faqTitle":"H61和Q67配合405显卡无法实现双屏显示的原因"},{"faqTitle":"NVIDIA显卡风扇转速异常或噪音变大问题的注意事项"},{"faqTitle":"各显卡厂商显卡型号的命名规则"}]},{"title":"游戏全屏设置","content":[{"faqTitle":"Windows 7/8系统下玩游戏无法全屏的两种解决方案"},{"faqTitle":"视频指导：Win7系统下ATI显卡如何调整缩放"},{"faqTitle":"Windows 7游戏不能全屏设置"}]}]}];
+            ko.applyBindings({navData:navData});
+        })
+    </script>
+    <style>
+        #colored-button .btn {
+            color: #fff;
+            width: 110px;
+        }
+        #colored-button a,
+        #colored-button a:hover {
+            background: #01BCFF;
+        }
+    </style>
+</head>
+<body style="margin: 0px;padding: 0px;height: 100%">
+<input type="hidden" id="base" value="http://localhost:8080">
+<style>
+    .container .wp .macth_xv_categorys .macth_xv_cat_catlist{display:block;}
+</style>
+<div class="header" id="head" style="height: 18%;width: 100%">
+    <div class="loginRegistHead" role="banner" style="height: 20%;width: 100%">
+        <div class="content clearfix" style="position: inherit;">
+            <div class="header_top_wrap_left" style="height: 100%;width: 70%">
+                <ul>
+                    <li><a class="new_a" href="robot.html" data-pos="categorys_1_1">智能小朵</a></li>
+                    <li><a class="new_a" href="faq.html" data-pos="categorys_1_1">知识库</a></li>
+                    <li><a class="new_a" href="question.html?c=all&amp;type=all" data-pos="categorys_1_1">问题中心</a></li>
+                    <!--  <li><a class="new_a" href="advise.html" data-pos="categorys_1_1">意见建议</a></li> -->
+                    <!--  <li>
+                         <a class="new_a" href="service.html">关于我们</a>
+                     </li> -->
+                </ul>
+            </div>
+            <div class="header_top_wrap_right" style="height: 100%;;width: 30%">
+                <ul>
+                    <div class="unlogin">
+                        <li class="unloginLinkLi">
+                            <a href="login.html" id="headLogin" class="listen_btn" data-pos="categorys_1_2">登录/注册</a>
+                        </li>
+
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="headContent" style="height: 80%;width: 100%">
+        <div class="headTop clearfix" style="height: 100%;width: 100%">
+            <a href="" class="logoCon" style="height: 100%;width: 70%">
+                <!--  	<img src="images/logo.jpg" class="logo" style="width:13%;height: 70%;margin-left: 20%">-->
+                <span>IT运维智能化服务一体化平台</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<div class="mainContent" style="height: 79%;width: 100%">
+    <div class="contentWra clearfix" style="height: 72%;width: 68%;">
+        <div id="login">
+            <div class="wrapper">
+                <div class="login">
+                    <form action="#" method="post" class="container offset1 loginform">
+                        <div class="pad">
+                            <!--效果html开始-->
+                            <div class="content">
+                                <div class="chatBox">
+                                    <!-- 自动问答左侧区 begin -->
+                                    <div class="chatLeft" style="height: 117%;width: 60%;">
+                                        <!-- 自动问答显示区 begin -->
+                                        <div class="chat01">
+                                            <div class="chat01_title"></div>
+                                            <div class="chat01_content">
+                                                <ul class="media-list chat-list">
+                                                    <br>
+                                                    <div id="chat01_content"><li class="media"><div style="width:48px;float:left;margin-left: 7px;"><div class="lhead"><img class="media-object" alt="Generic placeholder image" src="../static/assets/img/xiaoduo.png"></div><div style="margin-top: 5px;text-align: center;color:#3FA1F3;font-size:12px;font-weight: bold;">小朵</div></div><div class="media-body chat-pop"><span class="pull-right"><i class="fa fa-clock-o"></i> <abbr class="timeago">2020年4月18日   16:40:08</abbr> </span><p></p><div style="float:left;"><span style="">您好,我是智能客服小朵,有什么可以帮您？如果方案有帮助,记得评价哦<img src="images/bq.png" class="mCS_img_loaded"><br>➢<span style="color:blue;display:inline"><a href="javascript:void(0);" onclick="questionSkill()">提问技巧</a></span></span></div><p></p></div></li></div>
+                                                    <br>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <!-- 自动问答显示区 end -->
+
+                                        <!-- 自动问答提问区 begin -->
+                                        <div class="chat02">
+                                            <div class="chat02_title">
+
+                                            </div>
+                                            <div class="chat02_content">
+                                                <textarea id="textarea"></textarea>
+                                            </div>
+                                            <div class="chat02_bar">
+                                                <ul>
+                                                    <li style="right: 0px; top: -20px;">
+                                                        <p id="colored-button" class="text-center">
+                                                            <a class="btn float-buttons waves-effect waves-button waves-float" onclick="chat()">确 认</a>
+                                                        </p>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <!-- 自动问答提问区 end -->
+                                    </div>
+                                    <!-- 自动问答左侧区 end -->
+
+                                    <!-- 自动问答右侧区 begin -->
+                                    <div class="chatRight" style="height: 12%;width: 28%;">
+                                        <div class="container clearfix mt-40">
+                                            <div class="wp navbar">
+                                                <div class="macth_xv_navlist">
+                                                    <div class="macth_xv_menu">
+                                                        <!--右侧导航 start-->
+                                                        <div class="macth_xv_categorys">
+                                                            <div class="macth_xv_cat_title">
+                                                                <h2 class="macth_cat_name">
+                                                                    <a>热点问题分类<b class="macth_xv_icon_bai"></b></a>
+                                                                </h2>
+                                                            </div>
+                                                            <div class="macth_xv_cat_catlist ">
+                                                                <ul class="macth-dropdown-menu" data-bind="foreach:navData">
+                                                                    <li class="macth_xvitem" data-bind="attr:{'data-submenu-id':$data.id}" style="height: 6%;width: 100%;" data-submenu-id="speedMenu1">
+                                                                        <h3 style="height: 73%;width: 100%;">
+																				<span>
+																					<i><img src="../static/assets/chat/css/img/home_icon.png"></i>
+																				</span>
+                                                                            <span class="macth_xvh3_a">
+																					<a href="javascript:void(0)" data-bind="text:$data.title" class="">烟草运维</a>
+																				</span>
+                                                                            <s style="float: right; margin-right: 7%; display: block;"></s>
+                                                                        </h3>
+                                                                        <div data-bind="attr:{'id':$data.id}" class="macth_popover" style="width: 130%; height: 100%; overflow: scroll; display: none; top: -1px; left: 242px;" id="speedMenu1">
+                                                                            <div class="macth_popover-content" style="height: 44%;width: 100%;">
+                                                                                <ul class="macth_content_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">其它</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">测试faq标题</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">烟草公司</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">中国烟草</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">人事劳动和社会保障</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">人力资源和社会保障局是做些什么工作的</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">烟草人事调动通知</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">财务管理</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">如何提高烟草行业财务精益管理，降本增效</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">烟草专卖</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">标题ceshi</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">稽查员如何做好烟草专卖稽查工作</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">市场营销</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">烟草商业企业如何提升服务营销能力？</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">物流系统</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">为什么烟草行业的物流发展比较快？</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+
+                                                                    <li class="macth_xvitem" data-bind="attr:{'data-submenu-id':$data.id}" style="height: 6%;width: 100%;" data-submenu-id="speedMenu2">
+                                                                        <h3 style="height: 73%;width: 100%;">
+																				<span>
+																					<i><img src="../static/assets/chat/css/img/home_icon.png"></i>
+																				</span>
+                                                                            <span class="macth_xvh3_a">
+																					<a href="javascript:void(0)" data-bind="text:$data.title">m</a>
+																				</span>
+                                                                            <s style="float: right;margin-right: 7%"></s>
+                                                                        </h3>
+                                                                        <div data-bind="attr:{'id':$data.id}" class="macth_popover" style="width: 130%; height: 100%; overflow: scroll; display: none;" id="speedMenu2">
+                                                                            <div class="macth_popover-content" style="height: 44%;width: 100%;">
+                                                                                <ul class="macth_content_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">在线音/视频播放</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Windows 8下为Metro界面自带音乐，视频和图片软件添加其他位置存储媒体</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">使用暴风影音播放时如何跳过片头片尾</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">使用指纹开机无法直接进入桌面，重装指纹软件报错的解决方案</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">音画不同步</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">IdeaPad Y510笔记本在XP系统下如何开启Dolby音效？</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">xxxxxx</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">zzzzz</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+
+                                                                    <li class="macth_xvitem" data-bind="attr:{'data-submenu-id':$data.id}" style="height: 6%;width: 100%;" data-submenu-id="speedMenu3">
+                                                                        <h3 style="height: 73%;width: 100%;">
+																				<span>
+																					<i><img src="../static/assets/chat/css/img/home_icon.png"></i>
+																				</span>
+                                                                            <span class="macth_xvh3_a">
+																					<a href="javascript:void(0)" data-bind="text:$data.title" class="">BIOS</a>
+																				</span>
+                                                                            <s style="float: right; margin-right: 7%; display: block;"></s>
+                                                                        </h3>
+                                                                        <div data-bind="attr:{'id':$data.id}" class="macth_popover" style="width: 130%; height: 100%; overflow: scroll; display: none; top: -1px; left: 242px;" id="speedMenu3">
+                                                                            <div class="macth_popover-content" style="height: 44%;width: 100%;">
+                                                                                <ul class="macth_content_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">BIOS设置/模拟</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">小新AIR13、AIR13Pro如何开启或关闭USB关机充电功能</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">小新Air13、Air12、Air13pro如何关闭快捷键？</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Q77主板设置BIOS密码支持的密码字符类型和最长密码位数</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">BIOS更新</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">ThinkPad Edge E440 E540 无法正常使用 “Fn+P” 快捷键</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">如何升级主板BIOS</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">ThinkPad Twist S230u 自动旋转按钮失效的问题解决方案</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">清理BIOS</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">联想笔记本（Insyde H2o类型）如何设置、修改、清除bios硬盘密码</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">联想昭阳、扬天笔记本如何设置、修改、清除bios硬盘密码</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">如何清除bios密码</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+
+                                                                    <li class="macth_xvitem" data-bind="attr:{'data-submenu-id':$data.id}" style="height: 6%;width: 100%;" data-submenu-id="speedMenu4">
+                                                                        <h3 style="height: 73%;width: 100%;">
+																				<span>
+																					<i><img src="../static/assets/chat/css/img/home_icon.png"></i>
+																				</span>
+                                                                            <span class="macth_xvh3_a">
+																					<a href="javascript:void(0)" data-bind="text:$data.title">操作系统</a>
+																				</span>
+                                                                            <s style="float: right;margin-right: 7%"></s>
+                                                                        </h3>
+                                                                        <div data-bind="attr:{'id':$data.id}" class="macth_popover" style="width: 130%; height: 100%; overflow: scroll; display: none;" id="speedMenu4">
+                                                                            <div class="macth_popover-content" style="height: 44%;width: 100%;">
+                                                                                <ul class="macth_content_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">应用商店问题</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">如何彻底卸载Windows 8自带的metro应用</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Windows 8系统下metro界面应用无法打开并且有叉号</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">如何清除Windows 8商店缓存</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">磁盘分区</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">什么是VoLTE</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">如何查看SureHA G2软件的版本信息？</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">U盘引导安装Windows 8报错“Windows无法安装到这个磁盘，在EFI系统上只能安装在GPT磁盘”</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">系统还原</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Windows XP下如何进行系统还原</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Win10陷入无限重启修复的解决方法</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">如果“系统还原”不能工作，需要采取哪些步骤</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">激活问题</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">预装的Win10家庭中文版系统如何激活</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">如何查Win10 授权及相关信息</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">aida64查看密钥（可查看其他重要参数）</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">系统登录问题</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Windows 10如何清除用户登录密码</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">开启Win10组合键解锁屏幕方法</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">电脑忘记开机密码的解决方法参考</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">浏览器</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Internet Explorer 8 网页加载速度变慢怎么办</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">禁止浏览器使用internet选项</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Win7系统安装Internet Explorer 10时提示在安装前需要更新的解决方案</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">系统安装与升级</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">关闭Aero特效功能</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">如何在移动硬盘上安装Win8 </a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Windows 8激活错误代码解析</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">程序安装与卸载</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Windows启动过程中提示警告：“致命错误C0000034，正在更新操作……”</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">在安装卡巴斯基时，装到一半就会出现无法访问 Windows installer服务</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Windows 7系统如何卸载已安装的程序？</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">系统应用操作</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">在“开始”屏幕上找不到 Internet Explorer 10 图标</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">SCVMM 2008 R2功能及安装需求</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">如何去除Windows 8系统图标上的小黄锁</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">清理垃圾</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Windows Vista系统盘空间紧张的解决方案</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">告诉你告诉你手机卡、慢的原因和流畅使用手机的N个技巧​</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">怎样进行磁盘碎片整理</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">开关机问题</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">安装有摄像头设备的情况下，Windows不能正常关机</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Win10的紧急重启介绍</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Windows XP无法正常关机</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">系统数据恢复</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Onekey Ghost备份恢复系统</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">从硬盘分区往其他分区复制文件的时候提示“一个意外错误使你无法复制该文件……”</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">突发电脑故障应急处理方法</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">蓝屏死机</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">蓝屏死机处理方法</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Windows 2000蓝屏死机故障分析与排除</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">笔记本显示屏种类介绍</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">输入法问题</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Win10系统下如何更改默认输入法</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Windows 8自带的中文输入法以及大部分输入法全半角切换</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Win10安装第三方输入法出现无法兼容问题怎么办？</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">用户账户</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Windows 7系统如何设置用户账户密码？</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Windows 8如何清除用户帐户的密码</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Windows 8如何设置管理员帐户</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+
+                                                                    <li class="macth_xvitem" data-bind="attr:{'data-submenu-id':$data.id}" style="height: 6%;width: 100%;" data-submenu-id="speedMenu5">
+                                                                        <h3 style="height: 73%;width: 100%;">
+																				<span>
+																					<i><img src="../static/assets/chat/css/img/home_icon.png"></i>
+																				</span>
+                                                                            <span class="macth_xvh3_a">
+																					<a href="javascript:void(0)" data-bind="text:$data.title">第三方软件</a>
+																				</span>
+                                                                            <s style="float: right;margin-right: 7%"></s>
+                                                                        </h3>
+                                                                        <div data-bind="attr:{'id':$data.id}" class="macth_popover" style="width: 130%; height: 100%; overflow: scroll; display: none;" id="speedMenu5">
+                                                                            <div class="macth_popover-content" style="height: 44%;width: 100%;">
+                                                                                <ul class="macth_content_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">QQ</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">能上QQ，不能打开网页的解决方案</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">QQ视频如何设置正确的摄像头</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">查看谁QQ在线对你隐身</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">360</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">U盘容量检测工具360保镖介绍</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">安装应用软件或文件时，在桌面自动出现很多其它的快捷图标</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">家悦s5 系列快速安装指南 V1.0（Win8.1）</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">暴风影音</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">手机版暴风影音如何扫描添加本地视频</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">如何清除暴风影音中的历史记录</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">怎样使暴风影音转换视频格式或转码？</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">其它</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">bluestacks 模拟器安装不上</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">PPS使用后屏幕有黑影</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">如何设置爱奇艺离线观看任务数</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+
+                                                                    <li class="macth_xvitem" data-bind="attr:{'data-submenu-id':$data.id}" style="height: 6%;width: 100%;" data-submenu-id="speedMenu6">
+                                                                        <h3 style="height: 73%;width: 100%;">
+																				<span>
+																					<i><img src="../static/assets/chat/css/img/home_icon.png"></i>
+																				</span>
+                                                                            <span class="macth_xvh3_a">
+																					<a href="javascript:void(0)" data-bind="text:$data.title">显示故障</a>
+																				</span>
+                                                                            <s style="float: right;margin-right: 7%"></s>
+                                                                        </h3>
+                                                                        <div data-bind="attr:{'id':$data.id}" class="macth_popover" style="width: 130%; height: 100%; overflow: scroll; display: none;" id="speedMenu6">
+                                                                            <div class="macth_popover-content" style="height: 44%;width: 100%;">
+                                                                                <ul class="macth_content_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">花屏</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">IdeaPad G470在外接电源花屏解决一例</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">LGL-CSSD-03-J-TB-117SIS650双显故障</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">上网看电影时，画面有马赛克现象的一个解决方案</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">闪屏</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">IdeaCentre B350 Win8系统运行英雄联盟闪屏</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">T60 ATI显示卡的机器播放视频闪动</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">943GML系列芯片组笔记本在Vista系统下液晶屏显示瞬间“闪烁”现象描述</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">3D</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">笔记本3D显示辅助判断方法</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">亮线</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">LCD显示器上有亮线</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">ThinkPad VISTA启动时屏幕上有水平的亮线闪烁</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Win7系统显示器出现一条亮线怎么回事？</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">偏色</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Lenovo Yoga 3 Pro开机登录系统后屏幕显示偏黄、偏暗</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">显示器显示偏色</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">显示器偏色或变色</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">分辨率问题</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">宽屏笔记本显示设置相关问题</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">视频指导：小新Air13高分辨率下显示模糊怎么办</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">视频指导：小新Air13 Pro高分辨率下显示模糊怎么办</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">漏光</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">LCD显示屏有漏光现象</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">我的电视在关灯以后屏幕有些漏光是怎么回事？</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">显示器漏光的原因及如何检测</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">黑屏</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">智能电视开不了机并且指示灯一直亮红灯怎么办？</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">ThinkCentre A系列等 dos状态无显示解决方案</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">ThinkPad笔记本在注销或切换用户时，屏幕亮度自动变暗</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+
+                                                                    <li class="macth_xvitem" data-bind="attr:{'data-submenu-id':$data.id}" style="height: 6%;width: 100%;" data-submenu-id="speedMenu7">
+                                                                        <h3 style="height: 73%;width: 100%;">
+																				<span>
+																					<i><img src="../static/assets/chat/css/img/home_icon.png"></i>
+																				</span>
+                                                                            <span class="macth_xvh3_a">
+																					<a href="javascript:void(0)" data-bind="text:$data.title">驱动程序帮助</a>
+																				</span>
+                                                                            <s style="float: right;margin-right: 7%"></s>
+                                                                        </h3>
+                                                                        <div data-bind="attr:{'id':$data.id}" class="macth_popover" style="width: 130%; height: 100%; overflow: scroll; display: none;" id="speedMenu7">
+                                                                            <div class="macth_popover-content" style="height: 44%;width: 100%;">
+                                                                                <ul class="macth_content_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">打印机</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">联想小新打印机如何通过WIFI安装驱动？</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">M7020/M7030WINXP系统下载驱动安装方法</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Windows 98 SE下LJ1900打印机驱动安装方法</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">快捷键＆电源管理</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">天骄SI机型在VISTA系统下如何安装BOX驱动？</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">邮件关怀---TPM驱动安装</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">安装操作系统后，在设备管理器中总有一个未知设备无法安装</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">主板芯片组</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">昭阳E280L WinXP系统驱动程序</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">新圆梦F系列机型改装Win XP系统后找不到驱动了</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Intel AHCI 驱动安装方法及常见问题汇总</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">显卡</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">IdeaPad V490u 安装Windows 8系统出现屏幕错位</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">L510 intel集成显卡报'ialmrnt5显卡驱动程序停止运行'</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Ideapad V470 Windows 7系统下安装独显驱动提示NVI2.DLL报错</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">网卡</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">IdeaPad Yoga 13使用无线上网时蓝牙耳机或蓝牙鼠标间歇性卡顿</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Lenovo G550在Windows XP操作系统下网卡驱动安装方法</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Q45主板的网络唤醒的实现</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">声卡</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">播放的声音时断时续</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">声卡驱动报错No Appropriate Driver to be installed</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">预装Windows 8系统升级8.1系统以后声音异常的临时解决方案</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">其它设备</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">LJ3803DN如何安装USB驱动和网络驱动</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">新扬天机型标配USB键盘功能键驱动问题注意事项</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Win10下安装驱动提示没有数字签名认证</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">无线网卡</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">B500一体机，在Windows XP系统下，bcm无线网卡驱动下载及安装过程</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">无线应用指南</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">B305一体机，在Windows XP系统下，Atheros无线网卡驱动下载及安装过程</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">摄像头</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">lenovo系列笔记本摄像头倒置180度的案例分析</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Intel RealSense 3D摄像头介绍</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">联想ET360摄像头应用程序帮助文档</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+
+                                                                    <li class="macth_xvitem" data-bind="attr:{'data-submenu-id':$data.id}" style="height: 6%;width: 100%;" data-submenu-id="speedMenu8">
+                                                                        <h3 style="height: 73%;width: 100%;">
+																				<span>
+																					<i><img src="../static/assets/chat/css/img/home_icon.png"></i>
+																				</span>
+                                                                            <span class="macth_xvh3_a">
+																					<a href="javascript:void(0)" data-bind="text:$data.title">一键恢复</a>
+																				</span>
+                                                                            <s style="float: right;margin-right: 7%"></s>
+                                                                        </h3>
+                                                                        <div data-bind="attr:{'id':$data.id}" class="macth_popover" style="width: 130%; height: 100%; overflow: scroll; display: none;" id="speedMenu8">
+                                                                            <div class="macth_popover-content" style="height: 44%;width: 100%;">
+                                                                                <ul class="macth_content_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">备份</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">一键恢复6.0备份时候的三种压缩模式的区别</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Think产品如何使用Rescue and Recovery 高级版制作备份（XP Vista）（适用于RR3.0-4.0）</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">如何删除一键恢复的备份文件</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">恢复</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">一键恢复6.0和卡巴斯基2009冲突备份时无法完成</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">一键恢复7.0系统恢复指导</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Yoga平板如何恢复出厂设置？</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">设置</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">部分一键恢复5.0机型与Vista SP1兼容问题的联机检查解决方案</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">联想笔记本一键恢复5.0机型，windows系统下有时候会提示“动态缓冲不足”</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">联想笔记本电脑一键恢复5.0与VISTA SP1兼容性问题预防及恢复方案</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+
+                                                                    <li class="macth_xvitem" data-bind="attr:{'data-submenu-id':$data.id}" style="height: 6%;width: 100%;" data-submenu-id="speedMenu9">
+                                                                        <h3 style="height: 73%;width: 100%;">
+																				<span>
+																					<i><img src="../static/assets/chat/css/img/home_icon.png"></i>
+																				</span>
+                                                                            <span class="macth_xvh3_a">
+																					<a href="javascript:void(0)" data-bind="text:$data.title">随机软件</a>
+																				</span>
+                                                                            <s style="float: right;margin-right: 7%"></s>
+                                                                        </h3>
+                                                                        <div data-bind="attr:{'id':$data.id}" class="macth_popover" style="width: 130%; height: 100%; overflow: scroll; display: none;" id="speedMenu9">
+                                                                            <div class="macth_popover-content" style="height: 44%;width: 100%;">
+                                                                                <ul class="macth_content_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">电源管理</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">IdeaPad U110电源管理的超级节能模式使用方法</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">K46随机联想电源管理如何查看版本信息和电池信息？</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">如何调节显卡的电源模式</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">一键影音</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">启天主机使用视频点播系统出现异常声响问题</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">联想100分学校背景音乐的存放路径</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">键盘上的一键影音指示灯不亮如何处理？</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">联想云盘</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">“联想云盘服务器连接异常”的解决方法 </a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">小新Air中联想云盘的使用说明</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">联想电脑管家绑定云盘帐号如何查看</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">VIBE手机应用</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">VIBE手机ROM特色功能：茄子快传之一键换机</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">VIBE手机ROM特色功能：复合触控功能</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">VIBE手机ROM特色功能：如何设置WLAN位置绑定</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">一键恢复</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Vista系统一键恢复原厂状态系统启动设定界面</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">一键恢复7.0无法正常进入的解决方案 </a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">商用台式主机OKR7.2使用手册</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">手机应用</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">安卓手机如何隐藏和开启开发人员选项</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">如何使用豌豆荚更换手机铃声</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">联想G808手机使用手册、PC同步软件</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">其他随机软件</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">ThinkPad X201 Win7系统摄像头图像倒置的解决方案</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Ideapad Y450自带壁纸软件Alive Idea Desktop的简单说明</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">如何设置金山词霸2006程序打开后自动在右下角任务栏上显示此程序的图标？</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">硬盘保护系统</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">联想硬盘保护系统EDU9.0.0 网络控制工具基础版（EDU驱动）</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">家悦D机型，联想100分学校同步教学的支持软件在哪可以下载？</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">EDU7.6 驱动程序以及用户手册</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">R＆R应急恢复系统</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">出厂未安装Windows下RNR程序的ThinkPad E10笔记本如何一键恢复</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">ThinkVantage R&amp;#38;R,Br_funcs.exe文件占用80%CPU资源</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">ThinkPad电脑如何用RNR已备份的系统进行一键恢复</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">人像识别</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">人像识别VeriFace3.5版本安装时看不到按钮提示</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">人像识别软件 Veriface V4.0新增功能介绍</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">如何在YouCam中使用摄像头摄录视频</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">指纹识别</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">ThinkPad如何安装或卸载指纹识别软件</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">打开私密空间提示“系统无法找到私密空间镜像文件”报错的解决方案</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">如何禁用指纹的开机提示</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">office软件</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">我如何设置开机自动登录Lync？</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">安装Microsoft Office 2010后为何会多出一个Q盘分区</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">如何使用 Excel 2010 的记录单功能？</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+
+                                                                    <li class="macth_xvitem" data-bind="attr:{'data-submenu-id':$data.id}" style="height: 6%;width: 100%;" data-submenu-id="speedMenu10">
+                                                                        <h3 style="height: 73%;width: 100%;">
+																				<span>
+																					<i><img src="../static/assets/chat/css/img/home_icon.png"></i>
+																				</span>
+                                                                            <span class="macth_xvh3_a">
+																					<a href="javascript:void(0)" data-bind="text:$data.title">病毒与安全</a>
+																				</span>
+                                                                            <s style="float: right;margin-right: 7%"></s>
+                                                                        </h3>
+                                                                        <div data-bind="attr:{'id':$data.id}" class="macth_popover" style="width: 130%; height: 100%; overflow: scroll; display: none;" id="speedMenu10">
+                                                                            <div class="macth_popover-content" style="height: 44%;width: 100%;">
+                                                                                <ul class="macth_content_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">漏洞与防护</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">适用于笔记本电脑的 Lenovo Service Engine（LSE）BIOS安全公告</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">在长时间的广播风暴期间，某些ThinkServer系统可能会重置为缺省配置</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">高级管理模块（AMM）中基于DOM的跨站脚本攻击漏洞</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">私密文件柜</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">扬天私密文件柜的使用方法</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">缺少dll文件导致打开私密文件柜时没反应的解决方案</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Portal3.x&amp;#38;Portal4.x&amp;#38;Portal5.x&amp;#38;Portal6.x私密文件柜帮助文档及常见问题</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">杀毒软件</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Think产品随机预装的McAfee杀毒软件使用的方法介绍</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Win10中了冰河木马的解决方法</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Windows 10下如何隐藏“启用病毒防护”等提示</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">文件加密</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Windows 7系统下如何对文件或者文件夹进行EFS加密操作</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">在 Vista 系统中实现加密文件或文件夹</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Win7系统下如何监控有人使用过自己的电脑</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+
+                                                                    <li class="macth_xvitem" data-bind="attr:{'data-submenu-id':$data.id}" style="height: 6%;width: 100%;" data-submenu-id="speedMenu11">
+                                                                        <h3 style="height: 73%;width: 100%;">
+																				<span>
+																					<i><img src="../static/assets/chat/css/img/home_icon.png"></i>
+																				</span>
+                                                                            <span class="macth_xvh3_a">
+																					<a href="javascript:void(0)" data-bind="text:$data.title">上网问题</a>
+																				</span>
+                                                                            <s style="float: right;margin-right: 7%"></s>
+                                                                        </h3>
+                                                                        <div data-bind="attr:{'id':$data.id}" class="macth_popover" style="width: 130%; height: 100%; overflow: scroll; display: none;" id="speedMenu11">
+                                                                            <div class="macth_popover-content" style="height: 44%;width: 100%;">
+                                                                                <ul class="macth_content_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">唤醒断网</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Win7系统上网过程中提示网络闲置20分钟，是否要继续还是断开？</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">WinXP从待机状态唤醒后网络连接断开</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Win7系统如何让电脑在休眠时不断网</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">下载文件</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">使用BT下载软件的相关问题</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">电脑不能下载东西的几种常见情况和解决办法</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">如何禁止电脑下载东西或者安装软件</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">4G/3G上网</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Lenovo MIIX系列3G版SIM卡插入和3G连接操作指导</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">联想昭阳A820系列笔记本电脑之“移动伴侣”用户手册 V1.0</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">3G上网经常掉线案例分析</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">无线搜不到</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">无线无法搜索到信号怎么办？</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">不能搜索到无线信号或找不到无线网络</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">win8无线网络受限</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">无线连不上</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">本地连接和无线网络连接丢失，设备管理器中驱动显示正常</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">S2003W如何配置无线网络</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">无线认证提示“设备所有权密码”的解决方案</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">网络设置</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">联想笔记本无法收到路由器发出的5G信号的原因</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Windows 8 操作系统中如何修改网络类型</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Intel 802.11AC无线网卡在使用Win10共享无线热点的时候会提示正在通过5G共享，无法使用2.4G共享</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">有线连不上</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Windows XP SP2 无法连接到选定网络，网络可能不在区域中</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">上网错误代码718、619、691、676、720、769、678、815介绍及解决方法</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">T/R280 G2、T/R350 G6C在拔掉网线后系统报警灯绿色闪烁</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">网页打不开</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">能搜索到AP，但不能连接到AP</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">YOGA机型Win10系统使用安卓手机USB共享网络上网卡慢</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">通过宽带（ADSL）连接上网提示找不到netcfg.hlp</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">宽带上网</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Win10系统提示网卡驱动不能用的原因和解决方法</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">宽带连接频繁掉线</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">ADSL频繁掉线故障分析</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">VPN/虚拟连接</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">用户咨询在VISTA下没有找到超级终端？</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Win10系统笔记本如何畅享Wifi共享</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">什么是VPN（VPN的含义）？</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">共享上网</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">在Windows XP下如何配置无线网络</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">局域网中机器同时不能连网</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">如何在系统下使用cmd命令关闭无线网络（非共享网络）</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">有线灯不亮</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">旭日210网卡无法启用，网卡指示灯不亮</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">网卡灯正常，但却不能连入网络</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">主板集成的Intel 82563EB千兆网卡指示灯异常的解决方案</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+
+                                                                    <li class="macth_xvitem" data-bind="attr:{'data-submenu-id':$data.id}" style="height: 6%;width: 100%;" data-submenu-id="speedMenu12">
+                                                                        <h3 style="height: 73%;width: 100%;">
+																				<span>
+																					<i><img src="../static/assets/chat/css/img/home_icon.png"></i>
+																				</span>
+                                                                            <span class="macth_xvh3_a">
+																					<a href="javascript:void(0)" data-bind="text:$data.title">设备应用</a>
+																				</span>
+                                                                            <s style="float: right;margin-right: 7%"></s>
+                                                                        </h3>
+                                                                        <div data-bind="attr:{'id':$data.id}" class="macth_popover" style="width: 130%; height: 100%; overflow: scroll; display: none;" id="speedMenu12">
+                                                                            <div class="macth_popover-content" style="height: 44%;width: 100%;">
+                                                                                <ul class="macth_content_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">触摸屏</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">天骄AX机型前面板有一块VFD屏幕，什么是VFD？</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">怎么安装数位板？数位板怎么用？</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">联想三能手写板软件的安装和使用</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">3D眼镜</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">智能电视S9、S52的3D眼镜配对方法及3D眼镜指示灯不亮的解决方法</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">使用Nivdia M4000显卡配合nvidia 3d vision眼镜实现3D显示的基本要求</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">联想智能电视3D眼镜使用方法</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">鼠标</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">ZTM600无线激光鼠标简介</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">2005暑促锋行K机型标配罗技MX310（六键）光电鼠标安装及使用方法</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Win7系统下鼠标右键失效的解决方法</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">手机连接</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">我的手机无法控制空气净化器d600是什么原因？</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">ET960如何把通话记录中的电话复制到SIM卡中?</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">乐phone手机如何快速开关无线设备设置亮度</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">外接显示</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">55i连接普通机顶盒或DVD的方法</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">通过HDMI接口连接电视无声音的处理思路</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Win10技巧：如何确定电脑是否适用Hyper-V虚拟机？</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">触控板</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Lenovo G475/G470新版本Synaptics触控板实现触击功能解决方案</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">昭阳K41/K42系列触控板左右按键颠倒的解决方案</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">触摸主机的金属部分有麻手（或触电）的感觉</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">硬盘</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">关于笔记本使用的混合硬盘SSHD的简单介绍</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">X100E不认硬盘的案例分析</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">笔记本换硬盘详细流程图</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">USB</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">产品介绍 U盘 (Memory keys - 128MB USB 2.0 High Speed Memory Key)</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">USB鼠标无法使用的解决思路</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Windows 7插入U盘或SD卡自动播放对话框无法弹出的解决方案</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">显示器</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">电脑显示器不亮主机正常</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">联想显示器按键定义和OSD菜单界面</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">LT1952wA用户手册及驱动</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">蓝牙</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">昭阳E390通过蓝牙与手机相连并传送数据的配置操作指导</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Win7系统下如何使用蓝牙耳机收听音乐</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">ThinkPad 配置Realtek 蓝牙/Wifi combo卡的机器出现wifi连接问题的操作指导</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">部件参数</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">数码相机SOSHOW500如何修改日期及时间？</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Lenovo 昭阳K27、K47、E47用户手册</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">家悦C/CE系列机型用户手册</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">麦克风</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">如何启用后置麦克风</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">电脑麦克风噪音的解决方法</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Vista系统下如何设置麦克风的录音音量大小？</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">内存</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">电脑会自动开机启动，是什么问题？</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">安装内存</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">如何快速判断机器是否配置低电压内存和CPU</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">键盘</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">扬天LEOS机型4键键盘驱动安装设置</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Fn功能键列表</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">S230U 键盘布局</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">指纹</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">联想B4400 M4400 M5400无法使用指纹识别登录Windows 的解决方案</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Lenovo笔记本电脑如何使用指纹登录到需要用户帐号的应用程序或网站</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">T400s如何开启或关闭指纹指示灯</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">笔记本电池</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">产品介绍 电池 (Batteries_chargers - ThinkPad A21eA22e NiMH Battery)</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">产品介绍 电池 (Batteries_chargers - ThinkPad A30 Series Li-Ion Battery)</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">笔记本电池只能充电到95%-99%之间无法充至100%的原因和处理方案</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">打印机/扫描仪连接</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">联想3系列、2系列彩色喷墨打印机（单按键）如何实现脱机自检页的操作</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">LJ7600N网络打印机，如何通过随机软件进行网卡的设置？</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">LJ6700DN的纸盒如何从A4扩成A3？</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">主板</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">31003260主板使用指南(MS6137ML2 V1.0)</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">如何执行CMOS保护设置？</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">NetVista 6840 -- 主板示意图</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+
+                                                                    <li class="macth_xvitem" data-bind="attr:{'data-submenu-id':$data.id}" style="height: 6%;width: 100%;" data-submenu-id="speedMenu13">
+                                                                        <h3 style="height: 73%;width: 100%;">
+																				<span>
+																					<i><img src="../static/assets/chat/css/img/home_icon.png"></i>
+																				</span>
+                                                                            <span class="macth_xvh3_a">
+																					<a href="javascript:void(0)" data-bind="text:$data.title">显卡切换与调试</a>
+																				</span>
+                                                                            <s style="float: right;margin-right: 7%"></s>
+                                                                        </h3>
+                                                                        <div data-bind="attr:{'id':$data.id}" class="macth_popover" style="width: 130%; height: 100%; overflow: scroll; display: none;" id="speedMenu13">
+                                                                            <div class="macth_popover-content" style="height: 44%;width: 100%;">
+                                                                                <ul class="macth_content_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">Nvidia双显卡切换</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">IdeaPad U450 双显卡如何切换？</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">ThinkPad T410s运行某些软件的时候禁用双显卡切换功能</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">如何使用NVIDIA OPTIMUS技术进行双显卡切换？</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">AMD双显卡切换</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">ThinkPad E575 AMD显卡控制台切换经典界面</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">标配AMD双显卡笔记本机型双显卡切换方法</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">G470A 双显卡切换方法补充</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">双屏显示</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">H61和Q67配合405显卡无法实现双屏显示的原因</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">NVIDIA显卡风扇转速异常或噪音变大问题的注意事项</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">各显卡厂商显卡型号的命名规则</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+
+                                                                                    <li class="macth_nav_li">
+                                                                                        <span class="macth_xvnav_li_alist" data-bind="text:$data.title" style="width: 100%;">游戏全屏设置</span>
+                                                                                        <ul class="macth_xvnav_li_ul" data-bind="foreach:$data.content" style="width: 100%;">
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Windows 7/8系统下玩游戏无法全屏的两种解决方案</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">视频指导：Win7系统下ATI显卡如何调整缩放</a></li>
+
+                                                                                            <li><a onclick="chat2()" data-bind="text:$data.faqTitle">Windows 7游戏不能全屏设置</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <!--左侧导航 end-->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 自动问答右侧区 end -->
+                                </div>
+                            </div>
+                            <!--效果html结束-->
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="../static/assets/chat/js/waves.min.js"></script>
+<script>
+    $(function() {
+        $('#login #textarea').focus(function() {
+            $('#owl-login').addClass('password');
+        }).blur(function() {
+            $('#owl-login').removeClass('password');
+        });
+    });
+</script>
+<script type="text/javascript">
+    var currentRoute = false;
+    $(document).on('ready', function () {
+        // Init Waves
+        Waves.init();
+        Waves.attach('.drag-ripple', 'waves-block', true);
+        Waves.attach('#bg-pattern', null, true);
+        init();
+        $(window).on('hashchange', routing);
+        /**
+         * Example source code click
+         */
+        $('#example .top-button').on('click', function () {
+            var type = $(this).data('code');
+            $('#source-code .box .code').addClass('hide');
+            $('#source-code .box #code-' + type).removeClass('hide');
+            $('#source-code').removeClass('hide');
+            setTimeout(function () {
+                $('#source-code').addClass('show');
+            }, 50);
+        });
+        $('#source-code .top-button').on('click', function () {
+
+            $('#source-code').removeClass('show');
+
+            setTimeout(function () {
+                $('#source-code .box .code').addClass('hide');
+                $('#source-code').addClass('hide');
+            }, 500);
+        });
+    });
+</script>
+<script type="text/javascript">
+    function chatme(){
+        alert("aaaaaaaaaaaa");
+    }
+</script>
+<script>
+    var base = $('#base').val();
+</script>
+
+
+<script type="text/javascript" src="../static/assets/chat/new/front/js/util.js"></script>
+<script type="text/javascript" src="../static/assets/chat/js/jquery.plugins-min.js"></script>
+<script src="../static/assets/chat/js/navbar.js"></script>
+<script src="../static/assets/chat/js/getInformation.js" async="async"></script>
+
+
+
+
+</body>
+</html>

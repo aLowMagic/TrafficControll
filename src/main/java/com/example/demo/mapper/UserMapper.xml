@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.po.User">
+    <id column="USERID" jdbcType="VARCHAR" property="USERID" />
+    <result column="USERNAME" jdbcType="VARCHAR" property="USERNAME" />
+    <result column="USERPASSWORD" jdbcType="VARCHAR" property="USERPASSWORD" />
+    <result column="USEREMAIL" jdbcType="VARCHAR" property="USEREMAIL" />
+    <result column="GENDER" jdbcType="VARCHAR" property="GENDER" />
+    <result column="USERBIRTHDAY" jdbcType="VARCHAR" property="USERBIRTHDAY" />
+    <result column="USERADDRESS" jdbcType="VARCHAR" property="USERADDRESS" />
+    <result column="USERSIGNATURE" jdbcType="VARCHAR" property="USERSIGNATURE" />
+    <result column="CREATETIME" jdbcType="VARCHAR" property="CREATETIME" />
+    <result column="ROLEID" jdbcType="VARCHAR" property="ROLEID" />
+    <result column="AVATAR" jdbcType="VARCHAR" property="AVATAR" />
+    <result column="USERSTATE" jdbcType="INTEGER" property="USERSTATE" />
+    <result column="VERIFICATIONCODE" jdbcType="VARCHAR" property="VERIFICATIONCODE" />
+    <result column="TIMEREMARKS" jdbcType="VARCHAR" property="TIMEREMARKS" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    USERID, USERNAME, USERPASSWORD, USEREMAIL, GENDER, USERBIRTHDAY, USERADDRESS, USERSIGNATURE, 
+    CREATETIME, ROLEID, AVATAR, USERSTATE, VERIFICATIONCODE, TIMEREMARKS
+  </sql>
+  <select id="selectByExample" parameterType="com.example.demo.po.UserExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from tbl_user
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_user
+    where USERID = #{USERID,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from tbl_user
+    where USERID = #{USERID,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.po.User">
+    insert into tbl_user (USERID, USERNAME, USERPASSWORD, 
+      USEREMAIL, GENDER, USERBIRTHDAY, 
+      USERADDRESS, USERSIGNATURE, CREATETIME, 
+      ROLEID, AVATAR, USERSTATE, 
+      VERIFICATIONCODE, TIMEREMARKS)
+    values (#{USERID,jdbcType=VARCHAR}, #{USERNAME,jdbcType=VARCHAR}, #{USERPASSWORD,jdbcType=VARCHAR}, 
+      #{USEREMAIL,jdbcType=VARCHAR}, #{GENDER,jdbcType=VARCHAR}, #{USERBIRTHDAY,jdbcType=VARCHAR}, 
+      #{USERADDRESS,jdbcType=VARCHAR}, #{USERSIGNATURE,jdbcType=VARCHAR}, #{CREATETIME,jdbcType=VARCHAR}, 
+      #{ROLEID,jdbcType=VARCHAR}, #{AVATAR,jdbcType=VARCHAR}, #{USERSTATE,jdbcType=INTEGER}, 
+      #{VERIFICATIONCODE,jdbcType=VARCHAR}, #{TIMEREMARKS,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.po.User">
+    insert into tbl_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="USERID != null">
+        USERID,
+      </if>
+      <if test="USERNAME != null">
+        USERNAME,
+      </if>
+      <if test="USERPASSWORD != null">
+        USERPASSWORD,
+      </if>
+      <if test="USEREMAIL != null">
+        USEREMAIL,
+      </if>
+      <if test="GENDER != null">
+        GENDER,
+      </if>
+      <if test="USERBIRTHDAY != null">
+        USERBIRTHDAY,
+      </if>
+      <if test="USERADDRESS != null">
+        USERADDRESS,
+      </if>
+      <if test="USERSIGNATURE != null">
+        USERSIGNATURE,
+      </if>
+      <if test="CREATETIME != null">
+        CREATETIME,
+      </if>
+      <if test="ROLEID != null">
+        ROLEID,
+      </if>
+      <if test="AVATAR != null">
+        AVATAR,
+      </if>
+      <if test="USERSTATE != null">
+        USERSTATE,
+      </if>
+      <if test="VERIFICATIONCODE != null">
+        VERIFICATIONCODE,
+      </if>
+      <if test="TIMEREMARKS != null">
+        TIMEREMARKS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="USERID != null">
+        #{USERID,jdbcType=VARCHAR},
+      </if>
+      <if test="USERNAME != null">
+        #{USERNAME,jdbcType=VARCHAR},
+      </if>
+      <if test="USERPASSWORD != null">
+        #{USERPASSWORD,jdbcType=VARCHAR},
+      </if>
+      <if test="USEREMAIL != null">
+        #{USEREMAIL,jdbcType=VARCHAR},
+      </if>
+      <if test="GENDER != null">
+        #{GENDER,jdbcType=VARCHAR},
+      </if>
+      <if test="USERBIRTHDAY != null">
+        #{USERBIRTHDAY,jdbcType=VARCHAR},
+      </if>
+      <if test="USERADDRESS != null">
+        #{USERADDRESS,jdbcType=VARCHAR},
+      </if>
+      <if test="USERSIGNATURE != null">
+        #{USERSIGNATURE,jdbcType=VARCHAR},
+      </if>
+      <if test="CREATETIME != null">
+        #{CREATETIME,jdbcType=VARCHAR},
+      </if>
+      <if test="ROLEID != null">
+        #{ROLEID,jdbcType=VARCHAR},
+      </if>
+      <if test="AVATAR != null">
+        #{AVATAR,jdbcType=VARCHAR},
+      </if>
+      <if test="USERSTATE != null">
+        #{USERSTATE,jdbcType=INTEGER},
+      </if>
+      <if test="VERIFICATIONCODE != null">
+        #{VERIFICATIONCODE,jdbcType=VARCHAR},
+      </if>
+      <if test="TIMEREMARKS != null">
+        #{TIMEREMARKS,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.po.User">
+    update tbl_user
+    <set>
+      <if test="USERNAME != null">
+        USERNAME = #{USERNAME,jdbcType=VARCHAR},
+      </if>
+      <if test="USERPASSWORD != null">
+        USERPASSWORD = #{USERPASSWORD,jdbcType=VARCHAR},
+      </if>
+      <if test="USEREMAIL != null">
+        USEREMAIL = #{USEREMAIL,jdbcType=VARCHAR},
+      </if>
+      <if test="GENDER != null">
+        GENDER = #{GENDER,jdbcType=VARCHAR},
+      </if>
+      <if test="USERBIRTHDAY != null">
+        USERBIRTHDAY = #{USERBIRTHDAY,jdbcType=VARCHAR},
+      </if>
+      <if test="USERADDRESS != null">
+        USERADDRESS = #{USERADDRESS,jdbcType=VARCHAR},
+      </if>
+      <if test="USERSIGNATURE != null">
+        USERSIGNATURE = #{USERSIGNATURE,jdbcType=VARCHAR},
+      </if>
+      <if test="CREATETIME != null">
+        CREATETIME = #{CREATETIME,jdbcType=VARCHAR},
+      </if>
+      <if test="ROLEID != null">
+        ROLEID = #{ROLEID,jdbcType=VARCHAR},
+      </if>
+      <if test="AVATAR != null">
+        AVATAR = #{AVATAR,jdbcType=VARCHAR},
+      </if>
+      <if test="USERSTATE != null">
+        USERSTATE = #{USERSTATE,jdbcType=INTEGER},
+      </if>
+      <if test="VERIFICATIONCODE != null">
+        VERIFICATIONCODE = #{VERIFICATIONCODE,jdbcType=VARCHAR},
+      </if>
+      <if test="TIMEREMARKS != null">
+        TIMEREMARKS = #{TIMEREMARKS,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where USERID = #{USERID,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.po.User">
+    update tbl_user
+    set USERNAME = #{USERNAME,jdbcType=VARCHAR},
+      USERPASSWORD = #{USERPASSWORD,jdbcType=VARCHAR},
+      USEREMAIL = #{USEREMAIL,jdbcType=VARCHAR},
+      GENDER = #{GENDER,jdbcType=VARCHAR},
+      USERBIRTHDAY = #{USERBIRTHDAY,jdbcType=VARCHAR},
+      USERADDRESS = #{USERADDRESS,jdbcType=VARCHAR},
+      USERSIGNATURE = #{USERSIGNATURE,jdbcType=VARCHAR},
+      CREATETIME = #{CREATETIME,jdbcType=VARCHAR},
+      ROLEID = #{ROLEID,jdbcType=VARCHAR},
+      AVATAR = #{AVATAR,jdbcType=VARCHAR},
+      USERSTATE = #{USERSTATE,jdbcType=INTEGER},
+      VERIFICATIONCODE = #{VERIFICATIONCODE,jdbcType=VARCHAR},
+      TIMEREMARKS = #{TIMEREMARKS,jdbcType=VARCHAR}
+    where USERID = #{USERID,jdbcType=VARCHAR}
+  </update>
+  
+  <insert id="login_register">
+		INSERT INTO TBL_User(TBL_User.USERID,TBL_User.USERNAME,TBL_User.USERPASSWORD,TBL_User.USERSTATE,TBL_User.CREATETIME,TBL_User.AVATAR) VALUES (#{0},#{1},#{2},#{3},#{4},#{5})
+	</insert>
+	<select id="isLogin" resultType="boolean">
+		SELECT COUNT(USERID) FROM TBL_User WHERE USERNAME=#{0} AND USERPASSWORD=#{1} AND USERSTATE=2
+	</select>
+	<select id="getUserInfoByName" parameterType="String" resultType="boolean">
+		SELECT COUNT(USERID) FROM TBL_User WHERE USERNAME = #{0}
+	</select>
+	<select id="getUserInfo" parameterType="String" resultMap="BaseResultMap">
+		SELECT * FROM TBL_User WHERE USERNAME=#{0}
+	</select>
+	<select id="getUserIdByName" parameterType="String" resultType="String">
+		SELECT USERID FROM TBL_User WHERE USERNAME=#{0}
+	</select>
+	<update id="updateUserInfo2" >
+		UPDATE TBL_User SET GENDER=#{1},USERBIRTHDAY=#{2},USERADDRESS=#{3},USERSIGNATURE=#{4} WHERE USERID=#{0}
+	</update>
+	<update id="updateUserPassword" >
+		UPDATE TBL_User SET USERPASSWORD=#{1} WHERE USERNAME=#{0}
+	</update>
+	<select id="getUserInfoById" parameterType="String" resultMap="BaseResultMap">
+		SELECT * FROM TBL_User WHERE USERID=#{0}
+	</select>
+	<select id="getUserNameById" parameterType="String" resultType="String">
+		SELECT USERNAME FROM TBL_User WHERE USERID=#{0}
+	</select>
+	<select id="getRoleNameByUserId" parameterType="String" resultType="String">
+		SELECT ROLENAME FROM TBL_User,TBL_Role WHERE TBL_User.ROLEID = TBL_Role.ROLEID AND USERID=#{0}
+	</select>
+	<select id="getAllUsers" parameterType="int" resultMap="BaseResultMap">
+		SELECT * FROM TBL_User WHERE USERSTATE = #{0} ORDER BY CREATETIME DESC
+	</select>
+	<select id="getAllUsers_limit" resultMap="BaseResultMap">
+		SELECT * FROM TBL_User WHERE USERSTATE = #{0} ORDER BY CREATETIME DESC LIMIT #{1}
+	</select>
+	<select id="getUserLists" resultMap="BaseResultMap">
+		SELECT * FROM TBL_User ,TBL_Role WHERE TBL_User.ROLEID = TBL_Role.ROLEID AND USERSTATE = #{0} AND TBL_Role.ROLENAME=#{1} ORDER BY TBL_User.CREATETIME DESC
+	</select>
+	<update id="updateUserState" >
+		UPDATE TBL_User SET USERSTATE = #{1} WHERE USERID=#{0}
+	</update>
+	<update id="updateUserImage" >
+		UPDATE TBL_User SET TBL_User.AVATAR=#{1} WHERE USERNAME=#{0}
+	</update>
+	<insert id="login_register2" >
+		INSERT INTO TBL_User(TBL_User.USERID,TBL_User.USERPASSWORD,TBL_User.USERNAME,TBL_User.USERSTATE,TBL_User.AVATAR,TBL_User.ROLEID) VALUES (#{0},#{1},#{2},#{3},#{4},#{5})
+	</insert>
+	<update id="updateUserRole" >
+		UPDATE TBL_User SET ROLEID = #{1} WHERE USERID=#{0}
+	</update>
+	<update id="resetPass" >
+		UPDATE TBL_User SET USERPASSWORD = #{1} WHERE USERID=#{0}
+	</update>
+	<select id="getUserCount" resultType="int">
+		SELECT COUNT(1) FROM TBL_User ,TBL_Role WHERE TBL_User.ROLEID = TBL_Role.ROLEID AND USERSTATE = #{0} AND TBL_Role.ROLENAME=#{1}
+	</select>
+	<select id="getPendingUserCount" resultType="int">
+		SELECT COUNT(1) FROM TBL_User WHERE USERSTATE = #{0}
+	</select>
+  
+</mapper>

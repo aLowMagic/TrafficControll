@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.ShareMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.po.Share">
+    <id column="SHAREID" jdbcType="VARCHAR" property="SHAREID" />
+    <result column="USERID" jdbcType="VARCHAR" property="USERID" />
+    <result column="TIME" jdbcType="VARCHAR" property="TIME" />
+    <result column="FAQQUESTIONID" jdbcType="VARCHAR" property="FAQQUESTIONID" />
+    <result column="COMMUNITYQUESTIONID" jdbcType="VARCHAR" property="COMMUNITYQUESTIONID" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    SHAREID, USERID, TIME, FAQQUESTIONID, COMMUNITYQUESTIONID
+  </sql>
+  <select id="selectByExample" parameterType="com.example.demo.po.ShareExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from tbl_share
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_share
+    where SHAREID = #{SHAREID,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from tbl_share
+    where SHAREID = #{SHAREID,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.po.Share">
+    insert into tbl_share (SHAREID, USERID, TIME, 
+      FAQQUESTIONID, COMMUNITYQUESTIONID)
+    values (#{SHAREID,jdbcType=VARCHAR}, #{USERID,jdbcType=VARCHAR}, #{TIME,jdbcType=VARCHAR}, 
+      #{FAQQUESTIONID,jdbcType=VARCHAR}, #{COMMUNITYQUESTIONID,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.po.Share">
+    insert into tbl_share
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="SHAREID != null">
+        SHAREID,
+      </if>
+      <if test="USERID != null">
+        USERID,
+      </if>
+      <if test="TIME != null">
+        TIME,
+      </if>
+      <if test="FAQQUESTIONID != null">
+        FAQQUESTIONID,
+      </if>
+      <if test="COMMUNITYQUESTIONID != null">
+        COMMUNITYQUESTIONID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="SHAREID != null">
+        #{SHAREID,jdbcType=VARCHAR},
+      </if>
+      <if test="USERID != null">
+        #{USERID,jdbcType=VARCHAR},
+      </if>
+      <if test="TIME != null">
+        #{TIME,jdbcType=VARCHAR},
+      </if>
+      <if test="FAQQUESTIONID != null">
+        #{FAQQUESTIONID,jdbcType=VARCHAR},
+      </if>
+      <if test="COMMUNITYQUESTIONID != null">
+        #{COMMUNITYQUESTIONID,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.po.Share">
+    update tbl_share
+    <set>
+      <if test="USERID != null">
+        USERID = #{USERID,jdbcType=VARCHAR},
+      </if>
+      <if test="TIME != null">
+        TIME = #{TIME,jdbcType=VARCHAR},
+      </if>
+      <if test="FAQQUESTIONID != null">
+        FAQQUESTIONID = #{FAQQUESTIONID,jdbcType=VARCHAR},
+      </if>
+      <if test="COMMUNITYQUESTIONID != null">
+        COMMUNITYQUESTIONID = #{COMMUNITYQUESTIONID,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where SHAREID = #{SHAREID,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.po.Share">
+    update tbl_share
+    set USERID = #{USERID,jdbcType=VARCHAR},
+      TIME = #{TIME,jdbcType=VARCHAR},
+      FAQQUESTIONID = #{FAQQUESTIONID,jdbcType=VARCHAR},
+      COMMUNITYQUESTIONID = #{COMMUNITYQUESTIONID,jdbcType=VARCHAR}
+    where SHAREID = #{SHAREID,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="getShareList_ID" resultType="String">
+  	SELECT SHAREID FROM TBL_Share WHERE USERID=#{0} AND FAQQUESTIONID=#{1}
+  </select>
+  <select id="getShareList_ID2" resultType="String">
+  	SELECT SHAREID FROM TBL_Share WHERE USERID=#{0} AND COMMUNITYQUESTIONID=#{1}
+  </select>
+  <insert id="saveShare">
+  	INSERT INTO TBL_Share(TBL_Share.SHAREID,TBL_Share.USERID,TBL_Share.TIME,TBL_Share.FAQQUESTIONID,TBL_Share.COMMUNITYQUESTIONID) VALUES (#{0},#{1},#{2},#{3},NULL)
+  </insert>
+  <select id="getShareList_FAQ_Limit" resultMap="BaseResultMap">
+  	SELECT * FROM TBL_Share WHERE USERID=#{0} AND COMMUNITYQUESTIONID IS NULL ORDER BY TIME DESC LIMIT #{1},#{2}
+  </select>
+  <select id="getShareList_FAQ_Limit_Time" resultMap="BaseResultMap">
+  	SELECT * FROM TBL_Share WHERE USERID=#{0} AND COMMUNITYQUESTIONID IS NULL AND STR_TO_DATE(TIME,'%Y-%m-%d %H:%i')&gt;STR_TO_DATE(#{3},'%Y-%m-%d %H:%i') ORDER BY TIME DESC LIMIT #{1},#{2}
+  </select>
+  <select id="getShareList_community_Limit" resultMap="BaseResultMap">
+  	SELECT * FROM TBL_Share WHERE USERID=#{0} AND FAQQUESTIONID IS NULL ORDER BY TIME DESC LIMIT #{1},#{2}
+  </select>
+  <select id="getShareList_community_Limit_Time" resultMap="BaseResultMap">
+  	SELECT * FROM TBL_Share WHERE USERID=#{0} AND FAQQUESTIONID IS NULL AND STR_TO_DATE(TIME,'%Y-%m-%d %H:%i')>STR_TO_DATE(#{3},'%Y-%m-%d %H:%i') ORDER BY TIME DESC LIMIT #{1},#{2}
+  </select>
+  <insert id="saveShare2">
+  	INSERT INTO TBL_Share(TBL_Share.SHAREID,TBL_Share.USERID,TBL_Share.TIME,TBL_Share.FAQQUESTIONID,TBL_Share.COMMUNITYQUESTIONID) VALUES (#{0},#{1},#{2},NULL,#{3})
+  </insert>
+  
+</mapper>
